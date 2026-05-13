@@ -291,7 +291,8 @@ a {
 .globe-card,
 .portrait-panel,
 .founder-copy,
-.logo-panel {
+.logo-panel,
+.portfolio-project {
     border: 1px solid rgba(255, 255, 255, 0.09);
     background: #070707;
     border-radius: 12px;
@@ -450,6 +451,274 @@ a {
     box-shadow: 0 0 18px #ff6a2d;
 }
 
+.project-showcase {
+    padding: 82px 50px 10px;
+    background: #050505;
+}
+
+.project-heading {
+    display: grid;
+    grid-template-columns: 280px minmax(320px, 760px) minmax(260px, 560px);
+    gap: 32px;
+    align-items: start;
+    margin-bottom: 42px;
+}
+
+.project-heading span {
+    color: #aeb4bc;
+    font-family: "Courier New", monospace;
+    font-size: 18px;
+    font-weight: 800;
+    letter-spacing: 1.8px;
+}
+
+.project-heading h2 {
+    font-size: clamp(2.8rem, 5vw, 5.8rem);
+    font-weight: 300;
+    line-height: 0.9;
+    letter-spacing: -0.075em;
+}
+
+.project-heading p {
+    color: #b6c1cf;
+    font-size: 16px;
+    line-height: 1.35;
+}
+
+.project-stack {
+    display: grid;
+    gap: 10px;
+}
+
+.portfolio-project {
+    position: relative;
+    min-height: 410px;
+    display: grid;
+    grid-template-columns: minmax(340px, 48%) 1fr;
+    background: radial-gradient(circle at 25% 35%, rgba(255,255,255,0.08), transparent 28%), #070707;
+}
+
+.project-orbital-visual {
+    position: relative;
+    min-height: 410px;
+    overflow: hidden;
+}
+
+.project-copy {
+    padding: 54px 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.project-number {
+    color: #ff8a38;
+    font-family: "Courier New", monospace;
+    font-size: 15px;
+    font-weight: 800;
+    margin-bottom: 18px;
+}
+
+.project-copy h3 {
+    max-width: 720px;
+    margin-bottom: 22px;
+    font-size: clamp(2.2rem, 4vw, 4.6rem);
+    font-weight: 300;
+    line-height: 0.92;
+    letter-spacing: -0.07em;
+}
+
+.project-copy p {
+    max-width: 680px;
+    color: #c5ccd4;
+    font-size: 16px;
+    line-height: 1.45;
+    margin-bottom: 28px;
+}
+
+.tag-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+}
+
+.tag-row span {
+    padding: 8px 11px;
+    border: 1px solid rgba(255, 255, 255, 0.13);
+    border-radius: 999px;
+    color: #f4f4f4;
+    background: rgba(255, 255, 255, 0.04);
+    font-family: "Courier New", monospace;
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.glider-body {
+    position: absolute;
+    left: 50%;
+    top: 48%;
+    width: 250px;
+    height: 22px;
+    transform: translate(-50%, -50%) rotate(-10deg);
+    border-radius: 100% 16px 16px 100%;
+    background: linear-gradient(90deg, #f7f7f7, #727272 45%, #050505);
+    box-shadow: 0 28px 45px rgba(0,0,0,0.7);
+    animation: aircraftFloat 5.5s ease-in-out infinite;
+}
+
+.glider-body::before,
+.glider-body::after {
+    content: "";
+    position: absolute;
+    right: -20px;
+    width: 58px;
+    height: 9px;
+    background: linear-gradient(90deg, #dcdcdc, #333);
+    border-radius: 80%;
+}
+
+.glider-body::before { top: -22px; transform: rotate(28deg); }
+.glider-body::after { bottom: -22px; transform: rotate(-28deg); }
+
+.glider-wing {
+    position: absolute;
+    left: 50%;
+    top: 48%;
+    width: 280px;
+    height: 75px;
+    background: linear-gradient(135deg, rgba(245,245,245,0.9), rgba(35,35,35,0.85));
+    clip-path: polygon(0 50%, 100% 0, 82% 100%);
+    transform-origin: right center;
+    animation: aircraftFloat 5.5s ease-in-out infinite;
+}
+
+.wing-left { transform: translate(-92%, -78%) rotate(-10deg); }
+.wing-right { transform: translate(-18%, 12%) rotate(170deg); }
+
+.flight-path {
+    position: absolute;
+    left: 14%;
+    top: 18%;
+    width: 72%;
+    height: 62%;
+    border: 1px solid rgba(255,255,255,0.18);
+    border-radius: 50%;
+    transform: rotate(-15deg);
+    animation: orbitSpin 18s linear infinite;
+}
+
+.path-two {
+    inset: 18% 20%;
+    width: auto;
+    height: auto;
+    animation-duration: 26s;
+}
+
+.bot-chassis {
+    position: absolute;
+    left: 50%;
+    top: 52%;
+    width: 255px;
+    height: 120px;
+    transform: translate(-50%, -50%) rotate(-4deg);
+    border-radius: 16px;
+    background: linear-gradient(135deg, #1a1a1a, #555 35%, #0b0b0b 80%);
+    border: 1px solid rgba(255,255,255,0.16);
+    box-shadow: 0 35px 55px rgba(0,0,0,0.75);
+    animation: botHover 4.8s ease-in-out infinite;
+}
+
+.bot-wheel,
+.bot-flywheel {
+    position: absolute;
+    border-radius: 50%;
+    border: 12px solid #161616;
+    background: radial-gradient(circle, #f26b32 0 16%, #d9d9d9 17% 32%, #080808 33%);
+    animation: wheelSpin 1.5s linear infinite;
+}
+
+.bot-wheel { width: 76px; height: 76px; top: 62%; }
+.wheel-a { left: 25%; }
+.wheel-b { right: 25%; }
+.bot-flywheel { width: 92px; height: 92px; top: 28%; border-width: 14px; }
+.flywheel-a { left: 36%; }
+.flywheel-b { right: 28%; }
+
+.bot-disc {
+    position: absolute;
+    left: 24%;
+    top: 22%;
+    width: 62px;
+    height: 18px;
+    border-radius: 50%;
+    background: #ff8a38;
+    box-shadow: 0 0 22px rgba(255,138,56,0.45);
+    animation: discLaunch 2.2s ease-in-out infinite;
+}
+
+.rocket-body {
+    position: absolute;
+    left: 50%;
+    top: 43%;
+    width: 72px;
+    height: 250px;
+    transform: translate(-50%, -50%) rotate(10deg);
+    border-radius: 55% 55% 14px 14px;
+    background: linear-gradient(90deg, #f6f6f6, #8b8b8b 46%, #121212 88%);
+    box-shadow: 0 32px 60px rgba(0,0,0,0.8);
+    animation: rocketRise 4.5s ease-in-out infinite;
+}
+
+.rocket-body::before,
+.rocket-body::after {
+    content: "";
+    position: absolute;
+    bottom: 12px;
+    width: 42px;
+    height: 70px;
+    background: linear-gradient(135deg, #ff8a38, #2a2a2a);
+    clip-path: polygon(50% 0, 100% 100%, 0 100%);
+}
+
+.rocket-body::before { left: -34px; transform: rotate(-8deg); }
+.rocket-body::after { right: -34px; transform: rotate(8deg); }
+
+.rocket-flame {
+    position: absolute;
+    left: 50%;
+    top: 71%;
+    width: 58px;
+    height: 105px;
+    transform: translateX(-50%) rotate(10deg);
+    border-radius: 50% 50% 10% 10%;
+    background: radial-gradient(circle, #fff7ae 0 20%, #ff8a38 21% 58%, transparent 60%);
+    filter: blur(1px);
+    animation: flamePulse 0.55s ease-in-out infinite;
+}
+
+.recovery-arc,
+.altitude-line {
+    position: absolute;
+    border: 1px solid rgba(255,255,255,0.18);
+}
+
+.recovery-arc {
+    left: 22%;
+    top: 16%;
+    width: 55%;
+    height: 70%;
+    border-radius: 50%;
+    animation: orbitSpin 20s linear infinite reverse;
+}
+
+.altitude-line {
+    left: 18%;
+    top: 12%;
+    width: 1px;
+    height: 76%;
+    border-style: dashed;
+}
+
 .about-founder {
     display: grid;
     grid-template-columns: minmax(320px, 490px) 1fr minmax(320px, 510px);
@@ -587,10 +856,39 @@ a {
     50% { filter: brightness(1.25); }
 }
 
+@keyframes aircraftFloat {
+    0%, 100% { translate: 0 0; }
+    50% { translate: 18px -16px; }
+}
+
+@keyframes botHover {
+    0%, 100% { translate: 0 0; }
+    50% { translate: 0 -14px; }
+}
+
+@keyframes discLaunch {
+    0% { transform: translate(0, 0) rotate(0deg); opacity: 0; }
+    20% { opacity: 1; }
+    70% { transform: translate(165px, -70px) rotate(240deg); opacity: 1; }
+    100% { transform: translate(230px, -105px) rotate(360deg); opacity: 0; }
+}
+
+@keyframes rocketRise {
+    0%, 100% { translate: 0 0; }
+    50% { translate: 0 -22px; }
+}
+
+@keyframes flamePulse {
+    0%, 100% { transform: translateX(-50%) rotate(10deg) scaleY(0.9); opacity: 0.75; }
+    50% { transform: translateX(-50%) rotate(10deg) scaleY(1.15); opacity: 1; }
+}
+
 @media (max-width: 1100px) {
     .motion-grid,
     .cred-grid,
-    .about-founder {
+    .about-founder,
+    .portfolio-project,
+    .project-heading {
         grid-template-columns: 1fr;
     }
 
@@ -605,6 +903,10 @@ a {
 
     .stat-column {
         grid-template-columns: repeat(3, 1fr);
+    }
+
+    .project-copy {
+        padding: 42px 32px;
     }
 }
 
@@ -649,6 +951,14 @@ a {
     .availability {
         left: 24px;
         right: 24px;
+    }
+
+    .project-showcase {
+        padding: 60px 24px 10px;
+    }
+
+    .project-orbital-visual {
+        min-height: 330px;
     }
 
     .founder-copy {
