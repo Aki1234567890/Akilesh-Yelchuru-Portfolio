@@ -6,6 +6,7 @@
     <title>Akilesh Yelchuru | Aerospace Engineering Portfolio</title>
     <meta name="description" content="Aerospace engineering portfolio for Akilesh Yelchuru, focused on rocketry, robotics, simulation, CAD, controls, and mission systems." />
     <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="project-cards.css" />
 </head>
 <body>
     <main>
@@ -26,8 +27,8 @@
             </p>
         </section>
 
-        <section class="motion-grid" aria-label="Featured engineering projects">
-            <article class="motion-card card-identity">
+        <section class="motion-grid project-card-grid" id="projects" aria-label="Featured engineering projects">
+            <article class="motion-card card-identity project-slot">
                 <div class="card-visual keycap-visual" aria-hidden="true">
                     <div class="keybase">
                         <span class="key clear">SYS</span>
@@ -35,26 +36,55 @@
                         <span class="key orange">AERO</span>
                     </div>
                 </div>
-                <h2>High-Performance Glider</h2>
+                <div class="motion-project-copy">
+                    <span class="project-mini-number">01</span>
+                    <h2>High-Performance Glider</h2>
+                    <p>Designed and fabricated an efficient unpowered glider focused on maximizing glide ratio, reducing drag, and maintaining structural integrity under realistic aerospace constraints.</p>
+                    <div class="mini-tag-row">
+                        <span>Siemens NX</span>
+                        <span>MATLAB</span>
+                        <span>CFD</span>
+                        <span>Aerodynamics</span>
+                    </div>
+                </div>
             </article>
 
-            <article class="motion-card card-main">
+            <article class="motion-card card-main project-slot">
                 <div class="card-visual hand-visual" aria-hidden="true">
                     <div class="robot-hand">
                         <span></span><span></span><span></span><span></span><span></span>
                     </div>
-                    <a class="learn-pill" href="#projects">LEARN MORE <span>➜</span></a>
                 </div>
-                <h2>VEX U Shooter Robot</h2>
+                <div class="motion-project-copy">
+                    <span class="project-mini-number">02</span>
+                    <h2>VEX U Shooter Robot</h2>
+                    <p>Built a VEX U Spin Up dual-flywheel shooter robot with emphasis on disk intake, shooting consistency, mechanical iteration, and integrated competition-ready subsystems.</p>
+                    <div class="mini-tag-row">
+                        <span>Fusion 360</span>
+                        <span>Mechanisms</span>
+                        <span>Prototyping</span>
+                        <span>Integration</span>
+                    </div>
+                </div>
             </article>
 
-            <article class="motion-card card-wheel">
+            <article class="motion-card card-wheel project-slot">
                 <div class="card-visual wheel-visual" aria-hidden="true">
                     <div class="wheel-ring">
                         <div class="wheel-core"></div>
                     </div>
                 </div>
-                <h2>L1 High-Power Rocket</h2>
+                <div class="motion-project-copy">
+                    <span class="project-mini-number">03</span>
+                    <h2>L1 High-Power Rocket</h2>
+                    <p>Designed, built, simulated, launched, and recovered a high-power rocket for NAR Level 1 certification, including stability checks, recovery design, fabrication, and post-flight review.</p>
+                    <div class="mini-tag-row">
+                        <span>CAD</span>
+                        <span>OpenRocket</span>
+                        <span>Stability</span>
+                        <span>Recovery</span>
+                    </div>
+                </div>
             </article>
         </section>
 
@@ -100,82 +130,6 @@
                     <div class="map-dot"></div>
                 </div>
             </article>
-        </section>
-
-        <section class="project-showcase" id="projects">
-            <div class="project-heading">
-                <span>[ SELECTED PROJECTS ]</span>
-                <h2>Projects pulled from my engineering portfolio.</h2>
-                <p>Each project highlights a different part of my aerospace systems workflow: aerodynamic design, robotic mechanisms, simulation, fabrication, recovery, testing, and post-flight validation.</p>
-            </div>
-
-            <div class="project-stack">
-                <article class="portfolio-project glider-project">
-                    <div class="project-orbital-visual" aria-hidden="true">
-                        <div class="glider-body"></div>
-                        <div class="glider-wing wing-left"></div>
-                        <div class="glider-wing wing-right"></div>
-                        <div class="flight-path path-one"></div>
-                        <div class="flight-path path-two"></div>
-                    </div>
-                    <div class="project-copy">
-                        <span class="project-number">01</span>
-                        <h3>High-Performance Glider Design & Fabrication</h3>
-                        <p>Designed and built an efficient unpowered glider focused on maximizing glide ratio and structural performance under realistic aerospace constraints.</p>
-                        <div class="tag-row">
-                            <span>Siemens NX</span>
-                            <span>MATLAB</span>
-                            <span>CFD Analysis</span>
-                            <span>Aerodynamic Modeling</span>
-                            <span>Structural Optimization</span>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="portfolio-project robotics-project">
-                    <div class="project-orbital-visual" aria-hidden="true">
-                        <div class="bot-chassis"></div>
-                        <div class="bot-wheel wheel-a"></div>
-                        <div class="bot-wheel wheel-b"></div>
-                        <div class="bot-flywheel flywheel-a"></div>
-                        <div class="bot-flywheel flywheel-b"></div>
-                        <div class="bot-disc disc-one"></div>
-                    </div>
-                    <div class="project-copy">
-                        <span class="project-number">02</span>
-                        <h3>VEX U Robotics Spin Up Dual Flywheel Shooter Robot</h3>
-                        <p>Built a competition robot for the VEX U Spin Up season focused on fast disk intake, accurate shooting, reliable autonomous scoring, and mechanical iteration.</p>
-                        <div class="tag-row">
-                            <span>Fusion 360</span>
-                            <span>Mechanical Design</span>
-                            <span>Rapid Prototyping</span>
-                            <span>System Integration</span>
-                            <span>Drivetrain Integration</span>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="portfolio-project rocket-project">
-                    <div class="project-orbital-visual" aria-hidden="true">
-                        <div class="rocket-body"></div>
-                        <div class="rocket-flame"></div>
-                        <div class="recovery-arc"></div>
-                        <div class="altitude-line"></div>
-                    </div>
-                    <div class="project-copy">
-                        <span class="project-number">03</span>
-                        <h3>L1 High-Power Rocket Project</h3>
-                        <p>Designed, built, and flew a high-power rocket for NAR Level 1 certification, moving from concept through simulation, fabrication, launch, recovery, and post-flight review.</p>
-                        <div class="tag-row">
-                            <span>CAD</span>
-                            <span>Rocket Stability</span>
-                            <span>Recovery Design</span>
-                            <span>Fabrication</span>
-                            <span>Post-Flight Data Review</span>
-                        </div>
-                    </div>
-                </article>
-            </div>
         </section>
 
         <section class="about-founder" id="about">
