@@ -1,0 +1,92 @@
+/* Project card override: puts full project breakdowns inside the three top UI boxes */
+
+.project-card-grid .motion-card {
+    min-height: 610px;
+}
+
+.project-slot {
+    display: flex;
+    align-items: flex-end;
+}
+
+.project-slot .card-visual {
+    opacity: 0.55;
+    transform: scale(0.9) translateY(-35px);
+    transform-origin: center top;
+}
+
+.project-slot .learn-pill {
+    display: none;
+}
+
+.motion-project-copy {
+    position: relative;
+    z-index: 5;
+    width: 100%;
+    padding: 0 34px 32px 34px;
+    background: linear-gradient(180deg, transparent 0%, rgba(7, 7, 7, 0.86) 34%, #070707 100%);
+}
+
+.motion-project-copy .project-mini-number {
+    display: inline-block;
+    margin-bottom: 12px;
+    color: #ff8a38;
+    font-family: "Courier New", monospace;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.motion-project-copy h2 {
+    position: static;
+    max-width: 95%;
+    margin: 0 0 14px 0;
+    font-size: clamp(1.75rem, 2.1vw, 2.5rem);
+    font-weight: 300;
+    line-height: 0.95;
+    letter-spacing: -0.065em;
+    color: #f4f4f4;
+}
+
+.card-main .motion-project-copy h2 {
+    color: #ffb3a6;
+}
+
+.motion-project-copy p {
+    max-width: 520px;
+    margin: 0 0 18px 0;
+    color: #c5ccd4;
+    font-size: 14px;
+    line-height: 1.35;
+}
+
+.mini-tag-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.mini-tag-row span {
+    padding: 7px 9px;
+    border: 1px solid rgba(255, 255, 255, 0.13);
+    border-radius: 999px;
+    color: #f4f4f4;
+    background: rgba(255, 255, 255, 0.045);
+    font-family: "Courier New", monospace;
+    font-size: 11px;
+    font-weight: 800;
+}
+
+@media (max-width: 768px) {
+    .project-card-grid .motion-card {
+        min-height: 560px;
+    }
+
+    .motion-project-copy {
+        padding: 0 24px 28px 24px;
+    }
+
+    .motion-project-copy p {
+        font-size: 13px;
+    }
+}
