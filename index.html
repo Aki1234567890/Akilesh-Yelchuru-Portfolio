@@ -120,20 +120,9 @@
                 <div class="availability us-location-copy">
                     <h3>Based in the US</h3>
                 </div>
-                <div class="earth-stage" aria-hidden="true">
-                    <div class="clean-earth">
-                        <div class="earth-shine"></div>
-                        <div class="north-america landmass"></div>
-                        <div class="south-america landmass"></div>
-                        <div class="florida-marker location-marker">
-                            <span></span>
-                            <strong>Florida</strong>
-                        </div>
-                        <div class="massachusetts-marker location-marker">
-                            <span></span>
-                            <strong>Massachusetts</strong>
-                        </div>
-                    </div>
+                <div class="earth-stage" aria-label="Interactive rotating globe with Florida and Massachusetts markers">
+                    <canvas id="interactiveGlobe"></canvas>
+                    <div class="globe-hint">DRAG TO ROTATE</div>
                 </div>
             </article>
         </section>
@@ -162,5 +151,7 @@
             </div>
         </section>
     </main>
+
+    <script type="module" src="globe.js"></script>
 </body>
 </html>
