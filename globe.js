@@ -24,21 +24,22 @@ if (canvas && container) {
     const textureLoader = new THREE.TextureLoader();
     textureLoader.setCrossOrigin("anonymous");
 
-    const earthTexture = textureLoader.load(
+    const nightTexture = textureLoader.load(
+        "https://cdn.jsdelivr.net/gh/mrdoob/three.js@r164/examples/textures/planets/earth_lights_2048.png"
+    );
+    nightTexture.colorSpace = THREE.SRGBColorSpace;
+    nightTexture.anisotropy = 16;
+
+    const dayTexture = textureLoader.load(
         "https://raw.githubusercontent.com/turban/webgl-earth/master/images/2_no_clouds_4k.jpg"
     );
-    earthTexture.colorSpace = THREE.SRGBColorSpace;
-    earthTexture.anisotropy = 16;
+    dayTexture.colorSpace = THREE.SRGBColorSpace;
+    dayTexture.anisotropy = 16;
 
     const bumpTexture = textureLoader.load(
         "https://cdn.jsdelivr.net/gh/mrdoob/three.js@r164/examples/textures/planets/earth_bump_2048.jpg"
     );
     bumpTexture.anisotropy = 16;
-
-    const specTexture = textureLoader.load(
-        "https://cdn.jsdelivr.net/gh/mrdoob/three.js@r164/examples/textures/planets/earth_specular_2048.jpg"
-    );
-    specTexture.anisotropy = 16;
 
     const cloudTexture = textureLoader.load(
         "https://cdn.jsdelivr.net/gh/mrdoob/three.js@r164/examples/textures/planets/earth_clouds_1024.png"
@@ -47,65 +48,102 @@ if (canvas && container) {
     cloudTexture.anisotropy = 16;
 
     const earthGeometry = new THREE.SphereGeometry(radius, 192, 192);
-    const earthMaterial = new THREE.MeshPhongMaterial({
-        map: earthTexture,
+
+    const nightMaterial = new THREE.MeshPhongMaterial({
+        map: nightTexture,
         bumpMap: bumpTexture,
-        bumpScale: 0.035,
-        specularMap: specTexture,
-        specular: new THREE.Color(0x333333),
-        shininess: 14
+        bumpScale: 0.025,
+        color: new THREE.Color(0x9fb7ff),
+        emissive: new THREE.Color(0xffcf78),
+        emissiveMap: nightTexture,
+        emissiveIntensity: 1.35,
+        specular: new THREE.Color(0x111111),
+        shininess: 6
     });
 
-    const earth = new THREE.Mesh(earthGeometry, earthMaterial);
-    globeGroup.add(earth);
+    const nightEarth = new THREE.Mesh(earthGeometry, nightMaterial);
+    globeGroup.add(nightEarth);
 
-    const cloudGeometry = new THREE.SphereGeometry(radius * 1.012, 160, 160);
+    const dayOverlayMaterial = new THREE.MeshPhongMaterial({
+        map: dayTexture,
+        bumpMap: bumpTexture,
+        bumpScale: 0.018,
+        color: new THREE.Color(0x152443),
+        transparent: true,
+        opacity: 0.18,
+        specular: new THREE.Color(0x111827),
+        shininess: 10
+    });
+
+    const dayOverlay = new THREE.Mesh(
+        new THREE.SphereGeometry(radius * 1.002, 192, 192),
+        dayOverlayMaterial
+    );
+    globeGroup.add(dayOverlay);
+
+    const cityGlowMaterial = new THREE.MeshBasicMaterial({
+        map: nightTexture,
+        color: new THREE.Color(0xffd18a),
+        transparent: true,
+        opacity: 0.55,
+        blending: THREE.AdditiveBlending,
+        depthWrite: false
+    });
+
+    const cityGlow = new THREE.Mesh(
+        new THREE.SphereGeometry(radius * 1.006, 160, 160),
+        cityGlowMaterial
+    );
+    globeGroup.add(cityGlow);
+
+    const cloudGeometry = new THREE.SphereGeometry(radius * 1.014, 160, 160);
     const cloudMaterial = new THREE.MeshLambertMaterial({
         map: cloudTexture,
+        color: new THREE.Color(0x9bb8ff),
         transparent: true,
-        opacity: 0.28,
+        opacity: 0.18,
         depthWrite: false
     });
 
     const clouds = new THREE.Mesh(cloudGeometry, cloudMaterial);
     globeGroup.add(clouds);
 
-    const atmosphereGeometry = new THREE.SphereGeometry(radius * 1.035, 160, 160);
+    const atmosphereGeometry = new THREE.SphereGeometry(radius * 1.042, 160, 160);
     const atmosphereMaterial = new THREE.MeshBasicMaterial({
-        color: 0x8fb8ff,
+        color: 0x5d86ff,
         transparent: true,
-        opacity: 0.085,
+        opacity: 0.12,
         side: THREE.BackSide,
+        blending: THREE.AdditiveBlending,
         depthWrite: false
     });
 
     const atmosphere = new THREE.Mesh(atmosphereGeometry, atmosphereMaterial);
     globeGroup.add(atmosphere);
 
-    const terminatorGeometry = new THREE.SphereGeometry(radius * 1.004, 160, 160);
-    const terminatorMaterial = new THREE.MeshBasicMaterial({
-        color: 0x000000,
+    const rimGeometry = new THREE.SphereGeometry(radius * 1.048, 160, 160);
+    const rimMaterial = new THREE.MeshBasicMaterial({
+        color: 0x88aaff,
         transparent: true,
-        opacity: 0.18,
-        side: THREE.FrontSide,
+        opacity: 0.055,
+        side: THREE.BackSide,
         depthWrite: false
     });
 
-    const terminator = new THREE.Mesh(terminatorGeometry, terminatorMaterial);
-    terminator.rotation.y = Math.PI * 0.62;
-    globeGroup.add(terminator);
+    const rim = new THREE.Mesh(rimGeometry, rimMaterial);
+    globeGroup.add(rim);
 
-    scene.add(new THREE.AmbientLight(0xffffff, 0.55));
+    scene.add(new THREE.AmbientLight(0x1f2d55, 1.35));
 
-    const sunLight = new THREE.DirectionalLight(0xffffff, 1.95);
-    sunLight.position.set(-2.8, 2.4, 3.8);
-    scene.add(sunLight);
+    const moonLight = new THREE.DirectionalLight(0x9eb9ff, 1.1);
+    moonLight.position.set(-2.8, 2.4, 3.8);
+    scene.add(moonLight);
 
-    const fillLight = new THREE.DirectionalLight(0x8fb8ff, 0.34);
-    fillLight.position.set(3.5, -1.6, -2.5);
-    scene.add(fillLight);
+    const warmCityBoost = new THREE.DirectionalLight(0xffcc88, 0.42);
+    warmCityBoost.position.set(1.8, -0.6, 2.5);
+    scene.add(warmCityBoost);
 
-    const rimLight = new THREE.DirectionalLight(0xffffff, 0.28);
+    const rimLight = new THREE.DirectionalLight(0x90b7ff, 0.5);
     rimLight.position.set(2.5, 1.2, -3.5);
     scene.add(rimLight);
 
@@ -176,6 +214,7 @@ if (canvas && container) {
         }
 
         clouds.rotation.y += 0.00042;
+        cityGlow.rotation.y += 0.00004;
         renderer.render(scene, camera);
     }
 
