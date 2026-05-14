@@ -1,4 +1,4 @@
-/* Location card override: dark rotating wireframe Earth with US markers */
+/* Location card override: large white wireframe Earth dome with US markers */
 
 .us-location-card {
     min-height: 480px;
@@ -8,7 +8,7 @@
 
 .us-location-copy {
     left: 50%;
-    top: 26px;
+    top: 24px;
     transform: translateX(-50%);
     text-align: center;
     z-index: 8;
@@ -25,32 +25,30 @@
     position: absolute;
     inset: 0;
     overflow: hidden;
-    perspective: 1100px;
-    background:
-        radial-gradient(circle at 50% 28%, rgba(255, 255, 255, 0.045), transparent 22%),
-        #070707;
+    perspective: 1200px;
+    background: #070707;
 }
 
 .clean-earth {
     position: absolute;
     left: 50%;
-    bottom: -335px;
-    width: min(850px, 86vw);
-    height: min(850px, 86vw);
+    top: 148px;
+    width: min(980px, 96vw);
+    height: min(980px, 96vw);
     border-radius: 50%;
-    transform: translateX(-50%) rotateX(63deg);
+    transform: translateX(-50%) rotateX(66deg);
     transform-style: preserve-3d;
-    border: 1px solid rgba(255, 255, 255, 0.45);
+    border: 1px solid rgba(255, 255, 255, 0.58);
     background:
-        repeating-radial-gradient(circle at 50% 50%, transparent 0 19px, rgba(255, 255, 255, 0.15) 20px 21px),
-        repeating-conic-gradient(from 0deg, rgba(255, 255, 255, 0.16) 0deg 0.75deg, transparent 0.75deg 12deg),
-        radial-gradient(circle at 50% 52%, rgba(255, 255, 255, 0.08), transparent 58%),
+        repeating-radial-gradient(circle at 50% 50%, transparent 0 31px, rgba(255, 255, 255, 0.18) 32px 33px),
+        repeating-conic-gradient(from 0deg, rgba(255, 255, 255, 0.20) 0deg 0.55deg, transparent 0.55deg 9deg),
+        radial-gradient(circle at 50% 48%, rgba(255, 255, 255, 0.035), transparent 62%),
         #050505;
     box-shadow:
-        inset 0 35px 70px rgba(255, 255, 255, 0.035),
-        inset 0 -90px 120px rgba(0, 0, 0, 0.95),
-        0 0 45px rgba(255, 255, 255, 0.08);
-    animation: wireGlobeRotate 18s linear infinite;
+        inset 0 35px 70px rgba(255, 255, 255, 0.045),
+        inset 0 -110px 140px rgba(0, 0, 0, 0.96),
+        0 0 38px rgba(255, 255, 255, 0.08);
+    animation: wireGlobeRotate 28s linear infinite;
 }
 
 .clean-earth::before,
@@ -64,32 +62,33 @@
 
 .clean-earth::before {
     background:
-        radial-gradient(ellipse at 31% 32%, transparent 0 13%, rgba(255,255,255,0.88) 13.4% 13.9%, transparent 14.3%),
-        radial-gradient(ellipse at 36% 40%, transparent 0 12%, rgba(255,255,255,0.78) 12.5% 13%, transparent 13.4%),
-        radial-gradient(ellipse at 58% 36%, transparent 0 11%, rgba(255,255,255,0.78) 11.5% 12%, transparent 12.4%),
-        radial-gradient(ellipse at 70% 48%, transparent 0 10%, rgba(255,255,255,0.72) 10.5% 11%, transparent 11.4%);
-    opacity: 0.85;
-    filter: drop-shadow(0 0 2px rgba(255,255,255,0.45));
-    animation: landDrift 18s linear infinite;
+        radial-gradient(ellipse at 30% 34%, transparent 0 14.5%, rgba(255,255,255,0.96) 14.8% 15.2%, transparent 15.6%),
+        radial-gradient(ellipse at 35% 42%, transparent 0 12.5%, rgba(255,255,255,0.9) 12.8% 13.3%, transparent 13.7%),
+        radial-gradient(ellipse at 46% 39%, transparent 0 7%, rgba(255,255,255,0.78) 7.3% 7.8%, transparent 8.2%),
+        radial-gradient(ellipse at 60% 39%, transparent 0 11%, rgba(255,255,255,0.9) 11.3% 11.8%, transparent 12.2%),
+        radial-gradient(ellipse at 70% 48%, transparent 0 10%, rgba(255,255,255,0.82) 10.3% 10.8%, transparent 11.2%),
+        radial-gradient(ellipse at 79% 44%, transparent 0 8%, rgba(255,255,255,0.7) 8.3% 8.7%, transparent 9.1%);
+    opacity: 0.95;
+    filter: drop-shadow(0 0 1.5px rgba(255,255,255,0.65));
+    animation: landCounterRotate 28s linear infinite;
 }
 
 .clean-earth::after {
-    background:
-        radial-gradient(circle at 30% 42%, rgba(255,255,255,0.75) 0 1px, transparent 2px),
-        radial-gradient(circle at 33% 43%, rgba(255,255,255,0.75) 0 1px, transparent 2px),
-        radial-gradient(circle at 36% 44%, rgba(255,255,255,0.75) 0 1px, transparent 2px),
-        radial-gradient(circle at 58% 44%, rgba(255,255,255,0.75) 0 1px, transparent 2px),
-        radial-gradient(circle at 62% 46%, rgba(255,255,255,0.75) 0 1px, transparent 2px),
-        radial-gradient(circle at 66% 48%, rgba(255,255,255,0.75) 0 1px, transparent 2px);
-    background-size: 18px 18px;
-    opacity: 0.38;
-    animation: dotDrift 18s linear infinite;
+    background-image: radial-gradient(circle, rgba(255,255,255,0.48) 0 1.15px, transparent 1.45px);
+    background-size: 13px 13px;
+    opacity: 0.62;
+    mask-image:
+        radial-gradient(ellipse at 32% 36%, #000 0 22%, transparent 22.5%),
+        radial-gradient(ellipse at 58% 42%, #000 0 20%, transparent 20.5%),
+        radial-gradient(ellipse at 73% 47%, #000 0 18%, transparent 18.5%);
+    -webkit-mask-image:
+        radial-gradient(ellipse at 32% 36%, #000 0 22%, transparent 22.5%),
+        radial-gradient(ellipse at 58% 42%, #000 0 20%, transparent 20.5%),
+        radial-gradient(ellipse at 73% 47%, #000 0 18%, transparent 18.5%);
+    animation: dotCounterRotate 28s linear infinite;
 }
 
-.earth-shine {
-    display: none;
-}
-
+.earth-shine,
 .landmass {
     display: none;
 }
@@ -99,70 +98,59 @@
     z-index: 9;
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 7px;
     color: #f4f4f4;
     font-family: "Courier New", monospace;
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: -0.03em;
-    animation: markerFloat 2.8s ease-in-out infinite;
 }
 
 .location-marker span {
-    width: 12px;
-    height: 12px;
+    width: 10px;
+    height: 10px;
     border-radius: 50%;
     background: #ff6a2d;
-    box-shadow: 0 0 0 6px rgba(255, 106, 45, 0.17), 0 0 22px rgba(255, 106, 45, 0.8);
+    box-shadow: 0 0 0 5px rgba(255, 106, 45, 0.17), 0 0 18px rgba(255, 106, 45, 0.8);
 }
 
 .location-marker strong {
-    padding: 6px 8px;
-    border-radius: 999px;
-    background: rgba(0, 0, 0, 0.48);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    color: rgba(255,255,255,0.92);
+    display: none;
 }
 
 .florida-marker {
-    left: 35%;
-    top: 62%;
+    left: 33.5%;
+    top: 78%;
 }
 
 .massachusetts-marker {
-    left: 37%;
-    top: 54%;
-    animation-delay: 0.4s;
+    left: 35.5%;
+    top: 70%;
 }
 
 @keyframes wireGlobeRotate {
     0% {
-        transform: translateX(-50%) rotateX(63deg) rotateZ(0deg);
+        transform: translateX(-50%) rotateX(66deg) rotateZ(0deg);
         filter: brightness(0.95);
     }
     50% {
-        filter: brightness(1.12);
+        filter: brightness(1.14);
     }
     100% {
-        transform: translateX(-50%) rotateX(63deg) rotateZ(360deg);
+        transform: translateX(-50%) rotateX(66deg) rotateZ(360deg);
         filter: brightness(0.95);
     }
 }
 
-@keyframes landDrift {
+@keyframes landCounterRotate {
     0% { rotate: 0deg; }
     100% { rotate: -360deg; }
 }
 
-@keyframes dotDrift {
+@keyframes dotCounterRotate {
     0% { rotate: 0deg; }
     100% { rotate: -360deg; }
-}
-
-@keyframes markerFloat {
-    0%, 100% { translate: 0 0; }
-    50% { translate: 0 -5px; }
 }
 
 @media (max-width: 768px) {
@@ -173,22 +161,18 @@
     }
 
     .clean-earth {
-        width: 560px;
-        height: 560px;
-        bottom: -225px;
-    }
-
-    .location-marker {
-        font-size: 10px;
+        top: 150px;
+        width: 720px;
+        height: 720px;
     }
 
     .florida-marker {
-        left: 31%;
-        top: 64%;
+        left: 27%;
+        top: 80%;
     }
 
     .massachusetts-marker {
-        left: 34%;
-        top: 55%;
+        left: 31%;
+        top: 72%;
     }
 }
