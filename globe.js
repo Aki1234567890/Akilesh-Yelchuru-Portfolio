@@ -6,39 +6,54 @@ const container = canvas?.parentElement;
 if (canvas && container) {
     const scene = new THREE.Scene();
 
-    const camera = new THREE.PerspectiveCamera(38, 1, 0.1, 100);
-    camera.position.set(0, 0.35, 4.4);
+    const camera = new THREE.PerspectiveCamera(34, 1, 0.1, 100);
+    camera.position.set(0, 0.22, 4.55);
 
     const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
     renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+    renderer.setClearColor(0x070707, 0);
 
     const globeGroup = new THREE.Group();
-    globeGroup.rotation.x = -0.28;
-    globeGroup.rotation.y = -0.55;
+    globeGroup.rotation.x = -0.18;
+    globeGroup.rotation.y = -0.82;
     scene.add(globeGroup);
 
-    const radius = 1.82;
+    const radius = 1.95;
 
-    const sphereGeometry = new THREE.SphereGeometry(radius, 96, 96);
+    const surfaceGeometry = new THREE.SphereGeometry(radius, 128, 128);
+    const surfaceMaterial = new THREE.MeshPhongMaterial({
+        color: 0x050505,
+        specular: 0x444444,
+        shininess: 18,
+        transparent: true,
+        opacity: 0.92
+    });
+    const surface = new THREE.Mesh(surfaceGeometry, surfaceMaterial);
+    globeGroup.add(surface);
+
+    const wireGeometry = new THREE.SphereGeometry(radius * 1.003, 64, 64);
     const wireMaterial = new THREE.MeshBasicMaterial({
+        color: 0xd8d8d8,
+        wireframe: true,
+        transparent: true,
+        opacity: 0.18,
+        depthWrite: false
+    });
+    const wireSphere = new THREE.Mesh(wireGeometry, wireMaterial);
+    globeGroup.add(wireSphere);
+
+    const outerWireGeometry = new THREE.SphereGeometry(radius * 1.007, 32, 32);
+    const outerWireMaterial = new THREE.MeshBasicMaterial({
         color: 0xffffff,
         wireframe: true,
         transparent: true,
-        opacity: 0.18
+        opacity: 0.055,
+        depthWrite: false
     });
-    const wireSphere = new THREE.Mesh(sphereGeometry, wireMaterial);
-    globeGroup.add(wireSphere);
+    const outerWire = new THREE.Mesh(outerWireGeometry, outerWireMaterial);
+    globeGroup.add(outerWire);
 
-    const haloGeometry = new THREE.SphereGeometry(radius * 1.002, 96, 96);
-    const haloMaterial = new THREE.MeshBasicMaterial({
-        color: 0xffffff,
-        transparent: true,
-        opacity: 0.035
-    });
-    const halo = new THREE.Mesh(haloGeometry, haloMaterial);
-    globeGroup.add(halo);
-
-    function latLngToVector3(lat, lng, r = radius + 0.012) {
+    function latLngToVector3(lat, lng, r = radius + 0.018) {
         const phi = (90 - lat) * Math.PI / 180;
         const theta = (lng + 180) * Math.PI / 180;
         return new THREE.Vector3(
@@ -48,76 +63,114 @@ if (canvas && container) {
         );
     }
 
-    function makeDotCloud(count, latRange, lngRange, size = 0.008) {
+    function addLandDots(count, latRange, lngRange, size = 0.0065, opacity = 0.58) {
         const positions = [];
         for (let i = 0; i < count; i++) {
             const lat = latRange[0] + Math.random() * (latRange[1] - latRange[0]);
             const lng = lngRange[0] + Math.random() * (lngRange[1] - lngRange[0]);
-            const p = latLngToVector3(lat, lng, radius + 0.02);
+            const p = latLngToVector3(lat, lng, radius + 0.025);
             positions.push(p.x, p.y, p.z);
         }
 
-        const geo = new THREE.BufferGeometry();
-        geo.setAttribute("position", new THREE.Float32BufferAttribute(positions, 3));
-        const mat = new THREE.PointsMaterial({
-            color: 0xffffff,
+        const geometry = new THREE.BufferGeometry();
+        geometry.setAttribute("position", new THREE.Float32BufferAttribute(positions, 3));
+
+        const material = new THREE.PointsMaterial({
+            color: 0xd6d6d6,
             size,
             transparent: true,
-            opacity: 0.64,
+            opacity,
             depthWrite: false
         });
-        return new THREE.Points(geo, mat);
+
+        const dots = new THREE.Points(geometry, material);
+        globeGroup.add(dots);
+        return dots;
     }
 
-    const dotClouds = new THREE.Group();
-    dotClouds.add(makeDotCloud(1200, [8, 72], [-170, -50]));
-    dotClouds.add(makeDotCloud(600, [-55, 12], [-82, -35]));
-    dotClouds.add(makeDotCloud(1150, [35, 72], [-12, 45]));
-    dotClouds.add(makeDotCloud(900, [5, 60], [45, 140]));
-    globeGroup.add(dotClouds);
+    addLandDots(2400, [8, 73], [-168, -52]);
+    addLandDots(1150, [-55, 12], [-82, -35]);
+    addLandDots(1850, [35, 72], [-12, 48]);
+    addLandDots(1500, [5, 60], [45, 142]);
+    addLandDots(450, [-42, -10], [110, 155], 0.006, 0.48);
 
-    function addArc(lat1, lng1, lat2, lng2, opacity = 0.42) {
-        const start = latLngToVector3(lat1, lng1, radius + 0.035);
-        const end = latLngToVector3(lat2, lng2, radius + 0.035);
-        const mid = start.clone().add(end).normalize().multiplyScalar(radius + 0.28);
+    function addOutline(points, opacity = 0.85) {
+        const curvePoints = points.map(([lat, lng]) => latLngToVector3(lat, lng, radius + 0.035));
+        const geometry = new THREE.BufferGeometry().setFromPoints(curvePoints);
+        const material = new THREE.LineBasicMaterial({
+            color: 0xffffff,
+            transparent: true,
+            opacity,
+            depthWrite: false
+        });
+        const line = new THREE.Line(geometry, material);
+        globeGroup.add(line);
+        return line;
+    }
+
+    addOutline([[70,-150],[62,-132],[55,-125],[48,-124],[42,-124],[36,-121],[32,-114],[29,-104],[25,-98],[30,-90],[38,-82],[45,-74],[51,-64],[58,-62],[64,-72],[70,-92],[72,-118],[70,-150]], 0.72);
+    addOutline([[50,-80],[46,-72],[43,-70],[41,-73],[43,-77],[47,-80],[50,-80]], 0.82);
+    addOutline([[72,-52],[66,-45],[60,-44],[59,-52],[64,-58],[70,-58],[72,-52]], 0.7);
+    addOutline([[36,-10],[44,0],[52,10],[58,22],[62,38],[56,48],[47,42],[40,28],[36,10],[36,-10]], 0.6);
+
+    function addArc(lat1, lng1, lat2, lng2, opacity = 0.28) {
+        const start = latLngToVector3(lat1, lng1, radius + 0.055);
+        const end = latLngToVector3(lat2, lng2, radius + 0.055);
+        const mid = start.clone().add(end).normalize().multiplyScalar(radius + 0.42);
         const curve = new THREE.QuadraticBezierCurve3(start, mid, end);
-        const points = curve.getPoints(60);
-        const geo = new THREE.BufferGeometry().setFromPoints(points);
-        const mat = new THREE.LineBasicMaterial({ color: 0xffffff, transparent: true, opacity });
-        const line = new THREE.Line(geo, mat);
+        const geometry = new THREE.BufferGeometry().setFromPoints(curve.getPoints(80));
+        const material = new THREE.LineBasicMaterial({
+            color: 0xffffff,
+            transparent: true,
+            opacity,
+            depthWrite: false
+        });
+        const line = new THREE.Line(geometry, material);
         globeGroup.add(line);
     }
 
-    addArc(42.36, -71.06, 28.54, -81.38, 0.52);
-    addArc(28.54, -81.38, 51.5, -0.12, 0.22);
-    addArc(42.36, -71.06, 37.77, -122.42, 0.22);
-    addArc(28.54, -81.38, 35.68, 139.69, 0.18);
+    addArc(42.36, -71.06, 28.54, -81.38, 0.35);
+    addArc(42.36, -71.06, 51.5, -0.12, 0.18);
+    addArc(28.54, -81.38, 37.77, -122.42, 0.16);
 
     function createMarker(label, lat, lng, color = 0xff6a2d) {
-        const group = new THREE.Group();
-        const markerGeo = new THREE.SphereGeometry(0.04, 24, 24);
-        const markerMat = new THREE.MeshBasicMaterial({ color });
-        const marker = new THREE.Mesh(markerGeo, markerMat);
-        marker.position.copy(latLngToVector3(lat, lng, radius + 0.08));
-        group.add(marker);
+        const markerGroup = new THREE.Group();
 
-        const pulseGeo = new THREE.SphereGeometry(0.075, 24, 24);
-        const pulseMat = new THREE.MeshBasicMaterial({ color, transparent: true, opacity: 0.22 });
-        const pulse = new THREE.Mesh(pulseGeo, pulseMat);
+        const markerGeometry = new THREE.SphereGeometry(0.042, 24, 24);
+        const markerMaterial = new THREE.MeshBasicMaterial({ color });
+        const marker = new THREE.Mesh(markerGeometry, markerMaterial);
+        marker.position.copy(latLngToVector3(lat, lng, radius + 0.09));
+        markerGroup.add(marker);
+
+        const pulseGeometry = new THREE.SphereGeometry(0.085, 24, 24);
+        const pulseMaterial = new THREE.MeshBasicMaterial({
+            color,
+            transparent: true,
+            opacity: 0.19,
+            depthWrite: false
+        });
+        const pulse = new THREE.Mesh(pulseGeometry, pulseMaterial);
         pulse.position.copy(marker.position);
-        group.add(pulse);
+        markerGroup.add(pulse);
 
-        globeGroup.add(group);
+        globeGroup.add(markerGroup);
         return { marker, pulse, label };
     }
 
     const markers = [
-        createMarker("Florida", 28.54, -81.38),
+        createMarker("Florida", 28.54, -81.38, 0xff6a2d),
         createMarker("Massachusetts", 42.36, -71.06, 0xffffff)
     ];
 
-    const ambient = new THREE.AmbientLight(0xffffff, 1.0);
-    scene.add(ambient);
+    scene.add(new THREE.AmbientLight(0xffffff, 0.72));
+
+    const keyLight = new THREE.DirectionalLight(0xffffff, 1.4);
+    keyLight.position.set(-2.5, 2.4, 3.2);
+    scene.add(keyLight);
+
+    const rimLight = new THREE.DirectionalLight(0xffffff, 0.42);
+    rimLight.position.set(3, -1.5, -2);
+    scene.add(rimLight);
 
     let isDragging = false;
     let lastX = 0;
@@ -139,11 +192,11 @@ if (canvas && container) {
         lastX = event.clientX;
         lastY = event.clientY;
 
-        velocityX = dx * 0.006;
-        velocityY = dy * 0.006;
+        velocityX = dx * 0.005;
+        velocityY = dy * 0.005;
         globeGroup.rotation.y += velocityX;
         globeGroup.rotation.x += velocityY;
-        globeGroup.rotation.x = Math.max(-1.25, Math.min(1.05, globeGroup.rotation.x));
+        globeGroup.rotation.x = Math.max(-1.05, Math.min(0.85, globeGroup.rotation.x));
     }
 
     function onPointerUp(event) {
@@ -163,9 +216,9 @@ if (canvas && container) {
         camera.aspect = width / height;
         camera.updateProjectionMatrix();
 
-        const scale = width < 800 ? 0.95 : 1.12;
+        const scale = width < 800 ? 1.18 : 1.35;
         globeGroup.scale.setScalar(scale);
-        globeGroup.position.y = width < 800 ? -0.25 : -0.42;
+        globeGroup.position.y = width < 800 ? -1.05 : -1.18;
     }
 
     window.addEventListener("resize", resize);
@@ -175,8 +228,8 @@ if (canvas && container) {
         requestAnimationFrame(animate);
 
         if (!isDragging) {
-            globeGroup.rotation.y += 0.0022 + velocityX * 0.04;
-            globeGroup.rotation.x += velocityY * 0.025;
+            globeGroup.rotation.y += 0.00145 + velocityX * 0.035;
+            globeGroup.rotation.x += velocityY * 0.02;
             velocityX *= 0.94;
             velocityY *= 0.94;
         }
