@@ -7,7 +7,7 @@ if (canvas && container) {
     const scene = new THREE.Scene();
 
     const camera = new THREE.PerspectiveCamera(30, 1, 0.1, 100);
-    camera.position.set(0, 0.06, 4.85);
+    camera.position.set(0, 0.06, 6.1);
 
     const renderer = new THREE.WebGLRenderer({
         canvas,
@@ -122,14 +122,21 @@ if (canvas && container) {
     function resize() {
         const width = container.clientWidth;
         const height = container.clientHeight;
+        const isMobile = width < 760;
+        const isWide = width > 1180;
 
         renderer.setSize(width, height, false);
+
         camera.aspect = width / height;
+        camera.position.z = isMobile ? 6.35 : 6.1;
         camera.updateProjectionMatrix();
 
-        const scale = width < 800 ? 1.2 : 1.38;
+        const scale = isMobile ? 0.92 : isWide ? 1.12 : 1.06;
         globeGroup.scale.setScalar(scale);
-        globeGroup.position.y = width < 800 ? -0.92 : -0.96;
+
+        // Keep the Earth anchored low so the card only reveals a bottom-stage half view.
+        globeGroup.position.y = isMobile ? -1.56 : -1.62;
+        globeGroup.position.x = 0;
     }
 
     window.addEventListener("resize", resize);
