@@ -1,23 +1,32 @@
 const portraitScaleStyle = document.createElement('style');
 portraitScaleStyle.textContent = `
 .about-founder {
+    position: relative !important;
     display: grid !important;
     grid-template-columns: minmax(380px, 504px) minmax(0, 1fr) !important;
     align-items: stretch !important;
     gap: 0 !important;
-    margin: 0 10px 0 !important;
+    margin: 0 10px 10px !important;
     padding: 0 !important;
     min-height: 0 !important;
     background: #050505 !important;
     border: 1px solid rgba(255, 255, 255, 0.1) !important;
-    border-bottom: 0 !important;
-    border-radius: 12px 12px 0 0 !important;
+    border-radius: 12px !important;
     overflow: hidden !important;
+}
+
+.contact-anchor {
+    position: absolute !important;
+    top: -110px !important;
+    left: 0 !important;
+    width: 1px !important;
+    height: 1px !important;
+    pointer-events: none !important;
 }
 
 .about-founder .portrait-panel,
 .about-founder .founder-copy {
-    height: 548px !important;
+    height: 690px !important;
     min-height: 0 !important;
 }
 
@@ -74,7 +83,7 @@ portraitScaleStyle.textContent = `
     justify-content: flex-start !important;
     border: 0 !important;
     border-radius: 0 !important;
-    padding: 58px clamp(58px, 7vw, 112px) 34px 42px !important;
+    padding: 58px clamp(58px, 7vw, 112px) 36px 42px !important;
     background: #050505 !important;
 }
 
@@ -92,7 +101,7 @@ portraitScaleStyle.textContent = `
 
 .about-founder .founder-copy p {
     max-width: 860px !important;
-    margin: 0 0 26px !important;
+    margin: 0 0 24px !important;
     font-size: clamp(15px, 1.05vw, 18px) !important;
     line-height: 1.42 !important;
     letter-spacing: 0 !important;
@@ -100,30 +109,89 @@ portraitScaleStyle.textContent = `
 }
 
 .about-founder .founder-mark {
-    margin-top: 18px !important;
+    margin-top: 8px !important;
     color: #f5f1eb !important;
     font-size: 34px !important;
     line-height: 1 !important;
 }
 
-.about-founder .founder-cta {
-    margin-top: auto !important;
-    width: max-content !important;
-    color: #f4f0eb !important;
-    text-decoration: none !important;
-    font-size: 18px !important;
-    line-height: 1 !important;
-    letter-spacing: 0 !important;
+.about-contact-actions {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 10px !important;
+    margin-top: 24px !important;
 }
 
-.about-founder .founder-cta span {
-    margin-left: 8px !important;
+.about-contact-actions a {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 12px !important;
+    min-height: 46px !important;
+    padding: 12px 17px !important;
+    border-radius: 10px !important;
+    color: #111 !important;
+    background: #f4f0eb !important;
+    font-family: "Courier New", monospace !important;
+    font-size: 13px !important;
+    font-weight: 800 !important;
+    line-height: 1 !important;
+    text-transform: uppercase !important;
+    text-decoration: none !important;
+}
+
+.about-contact-actions a:nth-child(2) {
+    color: #f4f4f4 !important;
+    background: #050505 !important;
+    border: 1px solid rgba(255, 255, 255, 0.13) !important;
+}
+
+.about-contact-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 10px !important;
+    margin-top: auto !important;
+    padding-top: 24px !important;
+}
+
+.about-contact-grid div {
+    min-height: 106px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    gap: 10px !important;
+    padding: 18px !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 10px !important;
+    background: rgba(255, 255, 255, 0.04) !important;
+}
+
+.about-contact-grid span {
+    color: #ff8a38 !important;
+    font-family: "Courier New", monospace !important;
+    font-size: 11px !important;
+    font-weight: 800 !important;
+    text-transform: uppercase !important;
+}
+
+.about-contact-grid strong {
+    color: #f4f4f4 !important;
+    font-size: clamp(13px, 1vw, 16px) !important;
+    font-weight: 400 !important;
+    line-height: 1.2 !important;
+    overflow-wrap: anywhere !important;
+}
+
+.ask-panel {
+    margin: 0 10px 10px !important;
+    border: 1px solid rgba(255, 255, 255, 0.09) !important;
+    border-radius: 12px !important;
 }
 
 @media (max-width: 1100px) {
     .about-founder {
         grid-template-columns: 1fr !important;
-        margin: 0 10px 0 !important;
+        margin: 0 10px 10px !important;
         padding: 0 !important;
     }
 
@@ -140,11 +208,16 @@ portraitScaleStyle.textContent = `
         min-height: 0 !important;
         padding: 42px 26px 30px !important;
     }
+
+    .about-contact-grid {
+        grid-template-columns: 1fr !important;
+        margin-top: 24px !important;
+    }
 }
 
 @media (max-width: 768px) {
     .about-founder {
-        margin: 0 0 0 !important;
+        margin: 0 0 10px !important;
     }
 
     .about-founder .portrait-panel {
@@ -157,6 +230,14 @@ portraitScaleStyle.textContent = `
 
     .about-founder .founder-copy {
         padding: 38px 22px 28px !important;
+    }
+
+    .about-contact-actions a {
+        width: 100% !important;
+    }
+
+    .ask-panel {
+        margin: 0 0 10px !important;
     }
 }
 `;
