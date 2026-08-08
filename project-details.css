@@ -6,13 +6,14 @@
 
 .about-founder {
     grid-template-columns: minmax(320px, 490px) minmax(0, 1fr) !important;
+    padding-right: 10px !important;
 }
 
 .about-founder .founder-copy {
     grid-column: 2 / -1;
     width: 100%;
     min-height: 430px;
-    padding: clamp(64px, 6vw, 92px) clamp(80px, 10vw, 190px) clamp(64px, 6vw, 92px) clamp(70px, 7vw, 120px);
+    padding: clamp(64px, 6vw, 92px) clamp(64px, 7vw, 130px) clamp(64px, 6vw, 92px) clamp(70px, 7vw, 120px);
 }
 
 .about-founder .founder-copy h2 {
@@ -48,6 +49,7 @@
 @media (max-width: 1100px) {
     .about-founder {
         grid-template-columns: 1fr !important;
+        padding-right: 0 !important;
     }
 
     .about-founder .founder-copy {
