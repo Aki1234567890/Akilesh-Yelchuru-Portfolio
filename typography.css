@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;800&family=IBM+Plex+Mono:wght@500;700&display=swap');
+
+:root {
+    --font-sans: "Neue Montreal", "Inter", Arial, Helvetica, sans-serif;
+    --font-mono: "Supply Mono", "IBM Plex Mono", "Courier New", monospace;
+}
+
+body,
+body * {
+    font-family: var(--font-sans) !important;
+}
+
+.section-kicker,
+.nav-center-links a,
+.nav-contact-button,
+.hero-actions a,
+.contact-actions a,
+.project-mini-number,
+.mini-tag-row span,
+.index-card > span,
+.index-tags span,
+.map-line,
+.prompt-list button,
+.contact-card-grid span,
+.chat-toggle,
+.chat-header span,
+.chat-form button,
+.globe-hint,
+.powerhouse-label,
+.learn-pill,
+.robot-hand::after,
+.project-number,
+.tag-row span,
+.project-heading span,
+.availability p,
+.portrait-label span,
+.chat-form input {
+    font-family: var(--font-mono) !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+strong,
+p,
+a,
+button,
+input,
+span {
+    font-synthesis-weight: none;
+    text-rendering: geometricPrecision;
+}
