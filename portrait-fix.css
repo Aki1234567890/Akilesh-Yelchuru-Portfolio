@@ -1,26 +1,32 @@
 .about-founder .portrait-panel {
-    background: #070707 !important;
+    background:
+        radial-gradient(circle at 74% 52%, rgba(248, 176, 64, 0.55), rgba(0, 0, 0, 0) 34%),
+        linear-gradient(135deg, #c96638 0%, #d87a3e 57%, #080808 100%) !important;
 }
 
 .about-founder .portrait-panel .portrait-photo {
-    inset: 0 !important;
-    width: 100% !important;
-    height: 100% !important;
-    object-fit: cover !important;
-    object-position: 50% 38% !important;
-    transform: none !important;
+    inset: -2% !important;
+    width: 104% !important;
+    height: 104% !important;
+    object-fit: contain !important;
+    object-position: 50% 48% !important;
+    transform: scale(0.96) !important;
     transform-origin: center center;
     filter: saturate(1.03) contrast(1.04);
 }
 
 .about-founder .portrait-panel .portrait-glow {
     background:
-        linear-gradient(180deg, rgba(0, 0, 0, 0) 54%, rgba(0, 0, 0, 0.72) 100%),
-        linear-gradient(90deg, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0) 44%) !important;
+        linear-gradient(180deg, rgba(0, 0, 0, 0) 56%, rgba(0, 0, 0, 0.72) 100%),
+        linear-gradient(90deg, rgba(0, 0, 0, 0.06), rgba(0, 0, 0, 0) 44%) !important;
 }
 
 @media (max-width: 768px) {
     .about-founder .portrait-panel .portrait-photo {
-        object-position: 50% 36% !important;
+        inset: -1% !important;
+        width: 102% !important;
+        height: 102% !important;
+        object-position: 50% 48% !important;
+        transform: scale(0.97) !important;
     }
 }
