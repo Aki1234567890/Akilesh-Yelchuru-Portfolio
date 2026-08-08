@@ -111,7 +111,7 @@ function createProjectTransitionStage() {
 }
 
 createProjectTransitionStage();
-document.querySelectorAll('[data-project-details], .index-grid').forEach((section) => section.remove());
+document.querySelectorAll('[data-project-details], .index-grid, .architecture-map').forEach((section) => section.remove());
 
 const chatbot = document.querySelector('[data-chatbot]');
 const chatToggle = document.querySelector('.chat-toggle');
