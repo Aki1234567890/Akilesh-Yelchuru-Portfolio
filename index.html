@@ -14,13 +14,13 @@
 <body>
     <header class="top-nav" aria-label="Portfolio navigation">
         <nav class="nav-shell">
-            <div class="nav-spacer" aria-hidden="true"></div>
+            <a class="nav-brand" href="#top">Akilesh Yelchuru</a>
 
             <div class="nav-center-links">
+                <a href="#capabilities">Categories</a>
                 <a href="#projects">Projects</a>
-                <a href="#capabilities">Capabilities</a>
                 <a href="#about">Bio</a>
-                <a href="#ask">Ask</a>
+                <a href="#ask">AI</a>
             </div>
 
             <a class="nav-contact-button" href="#contact">
@@ -31,42 +31,41 @@
 
     <main>
         <section class="project-hero" id="top" aria-labelledby="hero-title">
+            <div class="hero-art" aria-hidden="true">
+                <div class="hero-glow"></div>
+                <div class="hero-metalmark">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <div class="hero-scanline"></div>
+            </div>
+
             <div class="hero-copy">
-                <span class="section-kicker">01 / Project Environment</span>
-                <h1 id="hero-title">Aerospace Design Experience</h1>
+                <span class="section-kicker">[ Aerospace Engineering Portfolio ]</span>
+                <h1 id="hero-title">Engineering Systems Forward</h1>
                 <p>
-                    A portfolio organized like an engineering system: projects connect to skills,
-                    components, analysis, testing, and mission decisions.
+                    Aerospace design, simulation, CAD, controls, and mission-focused engineering
+                    organized from capability to project to evidence.
                 </p>
                 <div class="hero-actions">
-                    <a href="#projects">Explore Projects</a>
-                    <a href="#capabilities">View Capabilities</a>
+                    <a href="#projects">View Projects <span>➜</span></a>
+                    <a href="#capabilities">Explore Categories <span>➜</span></a>
                 </div>
             </div>
 
-            <div class="hero-stage" aria-hidden="true">
-                <div class="technical-grid"></div>
-                <div class="hero-orbit orbit-one"></div>
-                <div class="hero-orbit orbit-two"></div>
-                <div class="project-object">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-                <div class="project-readout">
-                    <strong>01 / 06</strong>
-                    <span>L1 Rocket • Glider • Robotics • Mission Systems</span>
-                </div>
-            </div>
+            <div class="hero-footer-note">Scroll for categories ↓</div>
+            <div class="hero-established">Est. in engineering</div>
         </section>
 
         <section class="architecture-band" id="capabilities" aria-labelledby="capability-title">
             <div class="architecture-heading">
-                <span class="section-kicker">02 / Engineering Capabilities</span>
-                <h2 id="capability-title">Capability → Project → Evidence</h2>
+                <span class="section-kicker">01 / Categories</span>
+                <h2 id="capability-title">Engineering Capabilities</h2>
                 <p>
-                    Each box is a doorway into related project work, tools, subsystems, and analysis.
-                    Orange marks active or high-value technical interactions.
+                    Six technical categories organize the portfolio before the individual projects.
+                    Each one maps skills to project evidence, tools, subsystems, and analysis.
                 </p>
             </div>
         </section>
@@ -193,11 +192,11 @@
 
         <section class="project-index" id="projects" aria-labelledby="project-index-title">
             <div class="architecture-heading">
-                <span class="section-kicker">03 / Project Index</span>
-                <h2 id="project-index-title">Projects as systems</h2>
+                <span class="section-kicker">02 / Projects</span>
+                <h2 id="project-index-title">Projects as Systems</h2>
                 <p>
-                    The next build phase can turn these cards into fullscreen project transitions,
-                    then into CAD/component exploration when model assets are ready.
+                    Projects are presented after the categories so visitors first understand the
+                    technical capability map, then see where those capabilities show up in real work.
                 </p>
             </div>
 
@@ -278,7 +277,7 @@
             </div>
 
             <article class="founder-copy">
-                <span class="section-kicker">04 / About & Experience</span>
+                <span class="section-kicker">03 / About & Experience</span>
                 <h2>The Engineer</h2>
                 <p>
                     Akilesh Yelchuru is an aerospace engineering student focused on turning technical curiosity into mission-ready systems. His work spans rocketry, robotics, CAD, simulation, controls, and systems engineering documentation.
@@ -300,28 +299,75 @@
 
         <section class="ask-panel" id="ask" aria-labelledby="ask-title">
             <div>
-                <span class="section-kicker">05 / Ask My Portfolio</span>
-                <h2 id="ask-title">Navigate by question.</h2>
+                <span class="section-kicker">04 / AI Portfolio Assistant</span>
+                <h2 id="ask-title">Ask by evidence.</h2>
             </div>
             <div class="ask-content">
                 <p>
-                    Future AI layer: visitors can ask for specific evidence, and the site can route them to the relevant capability, project, subsystem, or analysis.
+                    Use the floating AI button to ask what skill, project, subsystem, or analysis you want to see. This front-end prototype routes common questions to the right portfolio areas.
                 </p>
                 <div class="prompt-list" aria-label="Example questions">
-                    <span>Show me FEA work.</span>
-                    <span>Explain the rocket recovery system.</span>
-                    <span>Where did CAD drive a design decision?</span>
+                    <button type="button" data-chat-prompt="Show me FEA work.">Show me FEA work.</button>
+                    <button type="button" data-chat-prompt="Explain the rocket recovery system.">Explain the rocket recovery system.</button>
+                    <button type="button" data-chat-prompt="Where did CAD drive a design decision?">Where did CAD drive a design decision?</button>
                 </div>
             </div>
         </section>
 
         <section class="contact-panel" id="contact" aria-labelledby="contact-title">
-            <span class="section-kicker">06 / Contact</span>
-            <h2 id="contact-title">Let’s build the next system.</h2>
-            <a href="mailto:akileshyelchuru@gmail.com">akileshyelchuru@gmail.com <span>➜</span></a>
+            <div class="contact-copy">
+                <span class="section-kicker">05 / Contact</span>
+                <h2 id="contact-title">Let’s build the next system.</h2>
+                <p>
+                    I’m interested in aerospace, robotics, simulation, CAD-driven design, mission systems,
+                    and engineering roles where technical work has to survive real constraints.
+                </p>
+                <div class="contact-actions">
+                    <a href="mailto:yelchuruakilesh@gmail.com">Email Me <span>➜</span></a>
+                    <a href="https://lowinertia.com/portfolio/akileshyelchuru" target="_blank" rel="noopener noreferrer">Resume <span>➜</span></a>
+                </div>
+            </div>
+
+            <div class="contact-card-grid" aria-label="Contact details">
+                <article>
+                    <span>Email</span>
+                    <strong>yelchuruakilesh@gmail.com</strong>
+                </article>
+                <article>
+                    <span>Focus</span>
+                    <strong>Aerospace, robotics, CAD, simulation</strong>
+                </article>
+                <article>
+                    <span>Location</span>
+                    <strong>Based in United States</strong>
+                </article>
+            </div>
         </section>
     </main>
 
+    <div class="ai-chatbot" data-chatbot>
+        <button class="chat-toggle" type="button" aria-expanded="false" aria-controls="chatPanel">
+            AI <span>Ask Portfolio</span>
+        </button>
+        <section class="chat-panel" id="chatPanel" aria-label="AI portfolio chatbot">
+            <div class="chat-header">
+                <div>
+                    <strong>Portfolio AI</strong>
+                    <span>Project navigator</span>
+                </div>
+                <button type="button" data-chat-close aria-label="Close chatbot">×</button>
+            </div>
+            <div class="chat-messages" data-chat-messages>
+                <p class="bot-message">Ask about FEA, CAD, rocketry, glider work, robotics, or systems engineering.</p>
+            </div>
+            <form class="chat-form" data-chat-form>
+                <input type="text" name="message" autocomplete="off" placeholder="Ask about a project..." />
+                <button type="submit">Send</button>
+            </form>
+        </section>
+    </div>
+
     <script type="module" src="globe.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
