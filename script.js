@@ -114,14 +114,24 @@ function loadAboutPortrait() {
     const portraitPanel = document.querySelector('.portrait-panel');
     if (!portraitPanel) return;
 
-    fetch('assets/akilesh-portrait.jpg')
-        .then((response) => response.text())
+    fetch('assets/akilesh-portrait.jpg?v=portrait-20260808')
+        .then((response) => {
+            if (!response.ok) throw new Error('Portrait asset unavailable');
+            return response.text();
+        })
         .then((imageData) => {
-            const cleanData = imageData.trim();
+            const cleanData = imageData.replace(/[^A-Za-z0-9+/=]/g, '');
             if (!cleanData) return;
 
-            portraitPanel.classList.add('has-portrait-image');
-            portraitPanel.style.backgroundImage = `linear-gradient(180deg, rgba(0,0,0,0) 45%, rgba(0,0,0,0.46) 100%), url("data:image/jpeg;base64,${cleanData}")`;
+            const imageUrl = `data:image/jpeg;base64,${cleanData}`;
+            const testImage = new Image();
+
+            testImage.onload = () => {
+                portraitPanel.classList.add('has-portrait-image');
+                portraitPanel.style.backgroundImage = `linear-gradient(180deg, rgba(0,0,0,0) 45%, rgba(0,0,0,0.46) 100%), url("${imageUrl}")`;
+            };
+
+            testImage.src = imageUrl;
         })
         .catch(() => {
             portraitPanel.classList.remove('has-portrait-image');
