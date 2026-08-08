@@ -1,3 +1,116 @@
+const transitionStyles = document.createElement('link');
+transitionStyles.rel = 'stylesheet';
+transitionStyles.href = 'project-transitions.css';
+document.head.appendChild(transitionStyles);
+
+const projectData = [
+    {
+        title: 'High-Performance Glider',
+        description: 'Aerospace geometry moves forward first: glide ratio, drag reduction, and structural decisions resolve into one aircraft form.',
+        tags: ['Aerodynamics', 'CAD', 'CFD'],
+        shape: 'depth-glider'
+    },
+    {
+        title: 'VEX U Shooter Robot',
+        description: 'The scene shifts from flight surfaces to mechanism packaging, flywheel motion, intake flow, and competition-ready subsystem integration.',
+        tags: ['Robotics', 'Mechanisms', 'Controls'],
+        shape: 'depth-robot'
+    },
+    {
+        title: 'L1 High-Power Rocket',
+        description: 'The camera passes through the mechanical space and lands on launch, stability, recovery, simulation, and post-flight review.',
+        tags: ['Rocketry', 'OpenRocket', 'Recovery'],
+        shape: 'depth-rocket'
+    },
+    {
+        title: 'NASA L’SPACE Mission Concept',
+        description: 'The final transition pulls back into mission architecture: requirements, interfaces, trades, risk, and systems-level decisions.',
+        tags: ['Systems', 'Mission', 'Trades'],
+        shape: 'depth-mission'
+    }
+];
+
+function createProjectTransitionStage() {
+    const projectIndex = document.querySelector('.project-index');
+    const indexGrid = document.querySelector('.index-grid');
+    if (!projectIndex || !indexGrid || document.querySelector('.project-transition-stage')) return;
+
+    const stage = document.createElement('div');
+    stage.className = 'project-transition-stage';
+    stage.innerHTML = `
+        <div class="project-transition-copy">
+            <span class="project-counter" data-project-counter></span>
+            <h3 data-project-title></h3>
+            <p data-project-description></p>
+            <div class="project-transition-tags" data-project-tags></div>
+        </div>
+        <div class="project-depth-scene" data-project-scene></div>
+        <div class="project-transition-strip" data-project-strip></div>
+        <div class="project-transition-controls">
+            <button type="button" data-project-prev aria-label="Previous project">‹</button>
+            <button type="button" data-project-next aria-label="Next project">›</button>
+        </div>
+    `;
+
+    indexGrid.before(stage);
+
+    const scene = stage.querySelector('[data-project-scene]');
+    const strip = stage.querySelector('[data-project-strip]');
+
+    projectData.forEach((project, index) => {
+        const object = document.createElement('div');
+        object.className = `project-depth-object ${project.shape}`;
+        object.dataset.projectObject = String(index);
+        object.innerHTML = '<span></span><span></span><span></span>';
+        scene.appendChild(object);
+
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.dataset.projectJump = String(index);
+        button.textContent = project.title;
+        strip.appendChild(button);
+    });
+
+    let activeIndex = 0;
+
+    function setActiveProject(nextIndex) {
+        activeIndex = (nextIndex + projectData.length) % projectData.length;
+        const activeProject = projectData[activeIndex];
+
+        stage.querySelector('[data-project-counter]').textContent = `${String(activeIndex + 1).padStart(2, '0')} / ${String(projectData.length).padStart(2, '0')}`;
+        stage.querySelector('[data-project-title]').textContent = activeProject.title;
+        stage.querySelector('[data-project-description]').textContent = activeProject.description;
+
+        const tagWrap = stage.querySelector('[data-project-tags]');
+        tagWrap.innerHTML = activeProject.tags.map((tag) => `<span>${tag}</span>`).join('');
+
+        stage.querySelectorAll('[data-project-object]').forEach((object) => {
+            const objectIndex = Number(object.dataset.projectObject);
+            const diff = (objectIndex - activeIndex + projectData.length) % projectData.length;
+            object.classList.remove('is-active', 'is-prev', 'is-next', 'is-far');
+
+            if (diff === 0) object.classList.add('is-active');
+            else if (diff === projectData.length - 1) object.classList.add('is-prev');
+            else if (diff === 1) object.classList.add('is-next');
+            else object.classList.add('is-far');
+        });
+
+        stage.querySelectorAll('[data-project-jump]').forEach((button) => {
+            button.classList.toggle('is-active', Number(button.dataset.projectJump) === activeIndex);
+        });
+    }
+
+    stage.querySelector('[data-project-prev]').addEventListener('click', () => setActiveProject(activeIndex - 1));
+    stage.querySelector('[data-project-next]').addEventListener('click', () => setActiveProject(activeIndex + 1));
+    stage.querySelectorAll('[data-project-jump]').forEach((button) => {
+        button.addEventListener('click', () => setActiveProject(Number(button.dataset.projectJump)));
+    });
+
+    setActiveProject(0);
+}
+
+createProjectTransitionStage();
+
 const chatbot = document.querySelector('[data-chatbot]');
 const chatToggle = document.querySelector('.chat-toggle');
 const chatClose = document.querySelector('[data-chat-close]');
