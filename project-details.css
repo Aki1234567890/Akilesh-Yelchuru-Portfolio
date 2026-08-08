@@ -7,14 +7,13 @@
     display: none !important;
 }
 
-.project-depth-object.is-active {
-    cursor: pointer;
-}
-
-.project-depth-object.is-active:hover {
-    filter: blur(0) brightness(1.12);
-}
-
+.project-depth-object,
+.project-depth-object.is-active,
 .project-depth-object:not(.is-active) {
+    pointer-events: none;
+    cursor: default;
+}
+
+.project-transition-strip button.is-active {
     pointer-events: none;
 }
