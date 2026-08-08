@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="nav.css" />
     <link rel="stylesheet" href="architecture.css" />
     <link rel="stylesheet" href="typography.css" />
+    <link rel="stylesheet" href="project-details.css" />
 </head>
 <body>
     <header class="top-nav" aria-label="Portfolio navigation">
@@ -196,35 +197,90 @@
                 <span class="section-kicker">02 / Projects</span>
                 <h2 id="project-index-title">Projects as Systems</h2>
                 <p>
-                    Projects are presented after the categories so visitors first understand the
-                    technical capability map, then see where those capabilities show up in real work.
+                    Use the project transition below as the navigator. Clicking the active project
+                    opens the full project section with its labels directly under the title.
                 </p>
             </div>
 
-            <div class="index-grid">
-                <article class="index-card featured-project">
-                    <span>01</span>
-                    <h3>High-Performance Glider</h3>
-                    <p>Glide ratio, drag reduction, structural integrity, and aerodynamic validation.</p>
-                    <div class="index-tags"><span>Aerodynamics</span><span>CAD</span><span>CFD</span></div>
+            <div class="project-detail-stack" data-project-details>
+                <article class="project-detail-page" id="project-glider">
+                    <div class="project-detail-visual project-detail-glider" aria-hidden="true">
+                        <span></span><span></span><span></span>
+                    </div>
+                    <div class="project-detail-copy">
+                        <span class="project-detail-number">01 / 04</span>
+                        <h3>High-Performance Glider</h3>
+                        <div class="project-detail-tags"><span>Aerodynamics</span><span>CAD</span><span>CFD</span></div>
+                        <p>
+                            Designed and fabricated an efficient unpowered glider focused on maximizing glide ratio,
+                            reducing drag, and maintaining structural integrity under realistic aerospace constraints.
+                        </p>
+                        <div class="project-detail-grid">
+                            <div><span>Focus</span><strong>Glide ratio and drag reduction</strong></div>
+                            <div><span>Tools</span><strong>Siemens NX, MATLAB, CFD workflow</strong></div>
+                            <div><span>Outcome</span><strong>Validated aerodynamic and structural choices through iteration</strong></div>
+                        </div>
+                    </div>
                 </article>
-                <article class="index-card">
-                    <span>02</span>
-                    <h3>VEX U Shooter Robot</h3>
-                    <p>Dual-flywheel shooter, intake mechanics, drivetrain integration, and iteration.</p>
-                    <div class="index-tags"><span>Robotics</span><span>Mechanisms</span><span>Controls</span></div>
+
+                <article class="project-detail-page" id="project-vex-shooter">
+                    <div class="project-detail-visual project-detail-robot" aria-hidden="true">
+                        <span></span><span></span><span></span>
+                    </div>
+                    <div class="project-detail-copy">
+                        <span class="project-detail-number">02 / 04</span>
+                        <h3>VEX U Shooter Robot</h3>
+                        <div class="project-detail-tags"><span>Robotics</span><span>Mechanisms</span><span>Controls</span></div>
+                        <p>
+                            Built a VEX U Spin Up dual-flywheel shooter robot with emphasis on disk intake,
+                            shooting consistency, mechanical iteration, and integrated competition-ready subsystems.
+                        </p>
+                        <div class="project-detail-grid">
+                            <div><span>Focus</span><strong>Flywheel consistency and intake reliability</strong></div>
+                            <div><span>Tools</span><strong>Fusion 360, mechanism prototyping, control logic</strong></div>
+                            <div><span>Outcome</span><strong>Integrated drivetrain, shooter, intake, and controls into one system</strong></div>
+                        </div>
+                    </div>
                 </article>
-                <article class="index-card">
-                    <span>03</span>
-                    <h3>L1 High-Power Rocket</h3>
-                    <p>Stability, recovery, fabrication, simulation, launch, and post-flight review.</p>
-                    <div class="index-tags"><span>Rocketry</span><span>OpenRocket</span><span>Recovery</span></div>
+
+                <article class="project-detail-page" id="project-l1-rocket">
+                    <div class="project-detail-visual project-detail-rocket" aria-hidden="true">
+                        <span></span><span></span><span></span>
+                    </div>
+                    <div class="project-detail-copy">
+                        <span class="project-detail-number">03 / 04</span>
+                        <h3>L1 High-Power Rocket</h3>
+                        <div class="project-detail-tags"><span>Rocketry</span><span>OpenRocket</span><span>Recovery</span></div>
+                        <p>
+                            Designed, built, simulated, launched, and recovered a high-power rocket for NAR Level 1
+                            certification, including stability checks, recovery design, fabrication, and post-flight review.
+                        </p>
+                        <div class="project-detail-grid">
+                            <div><span>Focus</span><strong>Stability, recovery, and launch readiness</strong></div>
+                            <div><span>Tools</span><strong>OpenRocket, CAD, fabrication, flight review</strong></div>
+                            <div><span>Outcome</span><strong>Moved from simulation through build, launch, recovery, and review</strong></div>
+                        </div>
+                    </div>
                 </article>
-                <article class="index-card">
-                    <span>04</span>
-                    <h3>NASA L’SPACE Mission Concept</h3>
-                    <p>Requirements, mission architecture, technical tradeoffs, and documentation.</p>
-                    <div class="index-tags"><span>Systems</span><span>Mission</span><span>Trades</span></div>
+
+                <article class="project-detail-page" id="project-nasa-lspace">
+                    <div class="project-detail-visual project-detail-mission" aria-hidden="true">
+                        <span></span><span></span><span></span>
+                    </div>
+                    <div class="project-detail-copy">
+                        <span class="project-detail-number">04 / 04</span>
+                        <h3>NASA L’SPACE Mission Concept</h3>
+                        <div class="project-detail-tags"><span>Systems</span><span>Mission</span><span>Trades</span></div>
+                        <p>
+                            Developed mission architecture thinking through requirements, interfaces, technical tradeoffs,
+                            risk, and documentation in a systems engineering context.
+                        </p>
+                        <div class="project-detail-grid">
+                            <div><span>Focus</span><strong>Requirements and mission architecture</strong></div>
+                            <div><span>Tools</span><strong>Trade studies, documentation, interface thinking</strong></div>
+                            <div><span>Outcome</span><strong>Connected subsystem choices to mission-level constraints</strong></div>
+                        </div>
+                    </div>
                 </article>
             </div>
         </section>
