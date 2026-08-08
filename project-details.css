@@ -5,26 +5,32 @@
 }
 
 .about-founder {
-    grid-template-columns: minmax(320px, 490px) minmax(0, 1fr) !important;
+    grid-template-columns: minmax(420px, 530px) minmax(620px, 1fr) !important;
+    gap: 10px !important;
     padding-right: 10px !important;
+    padding-bottom: 10px !important;
+}
+
+.about-founder .portrait-panel,
+.about-founder .founder-copy {
+    min-height: 440px !important;
 }
 
 .about-founder .founder-copy {
     grid-column: 2 / -1;
     width: 100%;
-    min-height: 430px;
-    padding: clamp(64px, 6vw, 92px) clamp(64px, 7vw, 130px) clamp(64px, 6vw, 92px) clamp(70px, 7vw, 120px);
+    padding: clamp(48px, 5vw, 70px) clamp(58px, 6vw, 96px);
 }
 
 .about-founder .founder-copy h2 {
-    margin-bottom: 42px;
+    margin-bottom: 34px;
 }
 
 .about-founder .founder-copy p {
-    max-width: 1040px;
-    margin-bottom: 34px;
-    font-size: clamp(15px, 1.05vw, 18px);
-    line-height: 1.72;
+    max-width: 900px;
+    margin-bottom: 28px;
+    font-size: clamp(14px, 0.95vw, 16px);
+    line-height: 1.62;
 }
 
 .about-founder .founder-copy p:last-child {
