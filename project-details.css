@@ -12,11 +12,22 @@
     grid-column: 2 / -1;
     width: 100%;
     min-height: 430px;
-    padding-right: clamp(70px, 9vw, 170px);
+    padding: clamp(64px, 6vw, 92px) clamp(80px, 10vw, 190px) clamp(64px, 6vw, 92px) clamp(70px, 7vw, 120px);
+}
+
+.about-founder .founder-copy h2 {
+    margin-bottom: 42px;
 }
 
 .about-founder .founder-copy p {
-    max-width: 920px;
+    max-width: 1040px;
+    margin-bottom: 34px;
+    font-size: clamp(15px, 1.05vw, 18px);
+    line-height: 1.72;
+}
+
+.about-founder .founder-copy p:last-child {
+    margin-bottom: 0;
 }
 
 .project-open-link {
@@ -41,12 +52,18 @@
 
     .about-founder .founder-copy {
         grid-column: auto;
-        padding-right: 42px;
+        padding: 54px 42px;
     }
 }
 
 @media (max-width: 768px) {
     .about-founder .founder-copy {
-        padding-right: 24px;
+        padding: 42px 24px;
+    }
+
+    .about-founder .founder-copy p {
+        font-size: 14px;
+        line-height: 1.58;
+        margin-bottom: 24px;
     }
 }
