@@ -1,0 +1,23 @@
+.about-founder .portrait-panel {
+    background: linear-gradient(135deg, #c86438 0%, #e18542 58%, #080808 100%) !important;
+}
+
+.about-founder .portrait-panel .portrait-photo {
+    object-fit: contain !important;
+    object-position: center bottom !important;
+    transform: scale(0.94);
+    transform-origin: center bottom;
+    filter: saturate(1.03) contrast(1.04);
+}
+
+.about-founder .portrait-panel .portrait-glow {
+    background:
+        linear-gradient(180deg, rgba(0, 0, 0, 0) 52%, rgba(0, 0, 0, 0.72) 100%),
+        radial-gradient(circle at 58% 36%, rgba(255, 255, 255, 0.08), rgba(0, 0, 0, 0) 45%) !important;
+}
+
+@media (max-width: 768px) {
+    .about-founder .portrait-panel .portrait-photo {
+        transform: scale(0.98);
+    }
+}
