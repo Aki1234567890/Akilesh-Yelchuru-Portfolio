@@ -110,7 +110,26 @@ function createProjectTransitionStage() {
     setActiveProject(0);
 }
 
+function loadAboutPortrait() {
+    const portraitPanel = document.querySelector('.portrait-panel');
+    if (!portraitPanel) return;
+
+    fetch('assets/akilesh-portrait.jpg')
+        .then((response) => response.text())
+        .then((imageData) => {
+            const cleanData = imageData.trim();
+            if (!cleanData) return;
+
+            portraitPanel.classList.add('has-portrait-image');
+            portraitPanel.style.backgroundImage = `linear-gradient(180deg, rgba(0,0,0,0) 45%, rgba(0,0,0,0.46) 100%), url("data:image/jpeg;base64,${cleanData}")`;
+        })
+        .catch(() => {
+            portraitPanel.classList.remove('has-portrait-image');
+        });
+}
+
 createProjectTransitionStage();
+loadAboutPortrait();
 document.querySelectorAll('[data-project-details], .index-grid, .architecture-map').forEach((section) => section.remove());
 
 const chatbot = document.querySelector('[data-chatbot]');
