@@ -1,29 +1,38 @@
-/* Top navigation bar inspired by the reference, adapted for portfolio pages */
+/* Floating top navigation for the portfolio start page */
 
 .top-nav {
-    position: sticky;
-    top: 0;
+    position: fixed;
+    top: 14px;
+    left: 0;
+    right: 0;
     z-index: 100;
     width: 100%;
-    padding: 7px 12px;
-    background: rgba(7, 7, 7, 0.82);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(18px);
+    padding: 0 12px;
+    background: transparent;
+    pointer-events: none;
 }
 
 .nav-shell {
-    min-height: 54px;
+    min-height: 78px;
     display: grid;
     grid-template-columns: 1fr auto 1fr;
     align-items: center;
     gap: 22px;
-    padding: 0 14px;
+    padding: 0 26px;
+    border: 1px solid rgba(255,255,255,0.14);
     border-radius: 10px;
-    background: linear-gradient(180deg, rgba(255,255,255,0.055), rgba(255,255,255,0.025));
+    background: rgba(24, 24, 24, 0.84);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 20px 55px rgba(0,0,0,0.28);
+    pointer-events: auto;
 }
 
-.nav-spacer {
-    min-width: 120px;
+.nav-brand {
+    justify-self: start;
+    color: #f4f4f4;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: -0.06em;
 }
 
 .nav-center-links {
@@ -70,14 +79,21 @@
 }
 
 @media (max-width: 850px) {
+    .top-nav {
+        top: 8px;
+        padding: 0 8px;
+    }
+
     .nav-shell {
+        min-height: auto;
         grid-template-columns: 1fr;
         gap: 12px;
         padding: 12px;
     }
 
-    .nav-spacer {
-        display: none;
+    .nav-brand {
+        justify-self: center;
+        font-size: 18px;
     }
 
     .nav-center-links {
@@ -92,7 +108,7 @@
         padding: 10px 5px;
         border-radius: 999px;
         background: rgba(255,255,255,0.05);
-        font-size: 12px;
+        font-size: 11px;
     }
 
     .nav-contact-button {
