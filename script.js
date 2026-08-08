@@ -8,32 +8,36 @@ const projectData = [
         title: 'High-Performance Glider',
         description: 'Aerospace geometry moves forward first: glide ratio, drag reduction, and structural decisions resolve into one aircraft form.',
         tags: ['Aerodynamics', 'CAD', 'CFD'],
-        shape: 'depth-glider'
+        shape: 'depth-glider',
+        slug: 'project-glider'
     },
     {
         title: 'VEX U Shooter Robot',
         description: 'The scene shifts from flight surfaces to mechanism packaging, flywheel motion, intake flow, and competition-ready subsystem integration.',
         tags: ['Robotics', 'Mechanisms', 'Controls'],
-        shape: 'depth-robot'
+        shape: 'depth-robot',
+        slug: 'project-vex-shooter'
     },
     {
         title: 'L1 High-Power Rocket',
         description: 'The camera passes through the mechanical space and lands on launch, stability, recovery, simulation, and post-flight review.',
         tags: ['Rocketry', 'OpenRocket', 'Recovery'],
-        shape: 'depth-rocket'
+        shape: 'depth-rocket',
+        slug: 'project-l1-rocket'
     },
     {
         title: 'NASA L’SPACE Mission Concept',
         description: 'The final transition pulls back into mission architecture: requirements, interfaces, trades, risk, and systems-level decisions.',
         tags: ['Systems', 'Mission', 'Trades'],
-        shape: 'depth-mission'
+        shape: 'depth-mission',
+        slug: 'project-nasa-lspace'
     }
 ];
 
 function createProjectTransitionStage() {
     const projectIndex = document.querySelector('.project-index');
-    const indexGrid = document.querySelector('.index-grid');
-    if (!projectIndex || !indexGrid || document.querySelector('.project-transition-stage')) return;
+    const detailStack = document.querySelector('[data-project-details]');
+    if (!projectIndex || !detailStack || document.querySelector('.project-transition-stage')) return;
 
     const stage = document.createElement('div');
     stage.className = 'project-transition-stage';
@@ -43,6 +47,7 @@ function createProjectTransitionStage() {
             <h3 data-project-title></h3>
             <p data-project-description></p>
             <div class="project-transition-tags" data-project-tags></div>
+            <button class="project-open-link" type="button" data-project-open>Open Project <span>➜</span></button>
         </div>
         <div class="project-depth-scene" data-project-scene></div>
         <div class="project-transition-strip" data-project-strip></div>
@@ -52,17 +57,40 @@ function createProjectTransitionStage() {
         </div>
     `;
 
-    indexGrid.before(stage);
+    detailStack.before(stage);
 
     const scene = stage.querySelector('[data-project-scene]');
     const strip = stage.querySelector('[data-project-strip]');
+
+    function openProject(index) {
+        const target = document.getElementById(projectData[index].slug);
+        if (!target) return;
+
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        window.history.replaceState(null, '', `#${projectData[index].slug}`);
+    }
 
     projectData.forEach((project, index) => {
         const object = document.createElement('div');
         object.className = `project-depth-object ${project.shape}`;
         object.dataset.projectObject = String(index);
+        object.setAttribute('role', 'button');
+        object.setAttribute('tabindex', '0');
+        object.setAttribute('aria-label', `Open ${project.title}`);
         object.innerHTML = '<span></span><span></span><span></span>';
         scene.appendChild(object);
+
+        object.addEventListener('click', () => {
+            if (object.classList.contains('is-active')) openProject(index);
+            else setActiveProject(index);
+        });
+
+        object.addEventListener('keydown', (event) => {
+            if (event.key !== 'Enter' && event.key !== ' ') return;
+            event.preventDefault();
+            if (object.classList.contains('is-active')) openProject(index);
+            else setActiveProject(index);
+        });
 
         const button = document.createElement('button');
         button.type = 'button';
@@ -80,6 +108,9 @@ function createProjectTransitionStage() {
         stage.querySelector('[data-project-counter]').textContent = `${String(activeIndex + 1).padStart(2, '0')} / ${String(projectData.length).padStart(2, '0')}`;
         stage.querySelector('[data-project-title]').textContent = activeProject.title;
         stage.querySelector('[data-project-description]').textContent = activeProject.description;
+
+        const openButton = stage.querySelector('[data-project-open]');
+        openButton.setAttribute('aria-label', `Open ${activeProject.title}`);
 
         const tagWrap = stage.querySelector('[data-project-tags]');
         tagWrap.innerHTML = activeProject.tags.map((tag) => `<span>${tag}</span>`).join('');
@@ -102,8 +133,14 @@ function createProjectTransitionStage() {
 
     stage.querySelector('[data-project-prev]').addEventListener('click', () => setActiveProject(activeIndex - 1));
     stage.querySelector('[data-project-next]').addEventListener('click', () => setActiveProject(activeIndex + 1));
+    stage.querySelector('[data-project-open]').addEventListener('click', () => openProject(activeIndex));
+
     stage.querySelectorAll('[data-project-jump]').forEach((button) => {
-        button.addEventListener('click', () => setActiveProject(Number(button.dataset.projectJump)));
+        button.addEventListener('click', () => {
+            const targetIndex = Number(button.dataset.projectJump);
+            if (targetIndex === activeIndex) openProject(targetIndex);
+            else setActiveProject(targetIndex);
+        });
     });
 
     setActiveProject(0);
