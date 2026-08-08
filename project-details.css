@@ -4,6 +4,14 @@
     display: none !important;
 }
 
+.about-founder {
+    grid-template-columns: minmax(320px, 490px) minmax(0, 1fr) !important;
+}
+
+.founder-copy {
+    min-height: 430px;
+}
+
 .project-open-link {
     display: none !important;
 }
@@ -17,4 +25,10 @@
 
 .project-transition-strip button.is-active {
     pointer-events: none;
+}
+
+@media (max-width: 1100px) {
+    .about-founder {
+        grid-template-columns: 1fr !important;
+    }
 }
