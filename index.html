@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="project-cards.css" />
     <link rel="stylesheet" href="location.css" />
     <link rel="stylesheet" href="nav.css" />
+    <link rel="stylesheet" href="architecture.css" />
 </head>
 <body>
     <header class="top-nav" aria-label="Portfolio navigation">
@@ -16,49 +17,78 @@
             <div class="nav-spacer" aria-hidden="true"></div>
 
             <div class="nav-center-links">
-                <a href="#projects">PROJECTS</a>
-                <a href="#about">BIO</a>
-                <a href="mailto:akileshyelchuru@gmail.com">CONTACT</a>
-                <a href="https://lowinertia.com/portfolio/akileshyelchuru" target="_blank" rel="noopener noreferrer">RESUME</a>
+                <a href="#projects">Projects</a>
+                <a href="#capabilities">Capabilities</a>
+                <a href="#about">Bio</a>
+                <a href="#ask">Ask</a>
             </div>
 
-            <a class="nav-contact-button" href="mailto:akileshyelchuru@gmail.com">
-                CONTACT <span>➜</span>
+            <a class="nav-contact-button" href="#contact">
+                Contact <span>➜</span>
             </a>
         </nav>
     </header>
 
     <main>
-        <section class="powerhouse-section" id="top">
-            <h1 class="powerhouse-title">
-                Aerospace Design Experience
-            </h1>
+        <section class="project-hero" id="top" aria-labelledby="hero-title">
+            <div class="hero-copy">
+                <span class="section-kicker">01 / Project Environment</span>
+                <h1 id="hero-title">Aerospace Design Experience</h1>
+                <p>
+                    A portfolio organized like an engineering system: projects connect to skills,
+                    components, analysis, testing, and mission decisions.
+                </p>
+                <div class="hero-actions">
+                    <a href="#projects">Explore Projects</a>
+                    <a href="#capabilities">View Capabilities</a>
+                </div>
+            </div>
 
-            <p class="powerhouse-description">
-                Over the last several years, I’ve refined a wide range of skills in aerospace design,
-                simulation, rocketry, robotics, and mission-focused engineering, always driven by the
-                purpose of building systems that move.
-            </p>
+            <div class="hero-stage" aria-hidden="true">
+                <div class="technical-grid"></div>
+                <div class="hero-orbit orbit-one"></div>
+                <div class="hero-orbit orbit-two"></div>
+                <div class="project-object">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <div class="project-readout">
+                    <strong>01 / 06</strong>
+                    <span>L1 Rocket • Glider • Robotics • Mission Systems</span>
+                </div>
+            </div>
         </section>
 
-        <section class="motion-grid project-card-grid" id="projects" aria-label="Featured engineering projects">
+        <section class="architecture-band" id="capabilities" aria-labelledby="capability-title">
+            <div class="architecture-heading">
+                <span class="section-kicker">02 / Engineering Capabilities</span>
+                <h2 id="capability-title">Capability → Project → Evidence</h2>
+                <p>
+                    Each box is a doorway into related project work, tools, subsystems, and analysis.
+                    Orange marks active or high-value technical interactions.
+                </p>
+            </div>
+        </section>
+
+        <section class="motion-grid project-card-grid" aria-label="Engineering capability categories">
             <article class="motion-card card-identity project-slot">
                 <div class="card-visual keycap-visual" aria-hidden="true">
                     <div class="keybase">
-                        <span class="key clear">SYS</span>
-                        <span class="key white">CAD</span>
-                        <span class="key orange">AERO</span>
+                        <span class="key clear">SIM</span>
+                        <span class="key white">MAT</span>
+                        <span class="key orange">DATA</span>
                     </div>
                 </div>
                 <div class="motion-project-copy">
                     <span class="project-mini-number">01</span>
                     <h2>Simulation & Modeling</h2>
-                    <p>Designed and fabricated an efficient unpowered glider focused on maximizing glide ratio, reducing drag, and maintaining structural integrity under realistic aerospace constraints.</p>
+                    <p>Modeling workflows for flight behavior, mechanical performance, mission trades, and early-stage design decisions before hardware is built.</p>
                     <div class="mini-tag-row">
-                        <span>Siemens NX</span>
                         <span>MATLAB</span>
-                        <span>CFD</span>
-                        <span>Aerodynamics</span>
+                        <span>Python</span>
+                        <span>OpenRocket</span>
+                        <span>Trade Studies</span>
                     </div>
                 </div>
             </article>
@@ -72,12 +102,12 @@
                 <div class="motion-project-copy">
                     <span class="project-mini-number">02</span>
                     <h2>CAD & Mechanical Design</h2>
-                    <p>Built a VEX U Spin Up dual-flywheel shooter robot with emphasis on disk intake, shooting consistency, mechanical iteration, and integrated competition-ready subsystems.</p>
+                    <p>Mechanical concept development, assembly design, part iteration, packaging, and design-for-build thinking across robotics and aerospace hardware.</p>
                     <div class="mini-tag-row">
                         <span>Fusion 360</span>
-                        <span>Mechanisms</span>
+                        <span>Siemens NX</span>
+                        <span>Assemblies</span>
                         <span>Prototyping</span>
-                        <span>Integration</span>
                     </div>
                 </div>
             </article>
@@ -91,11 +121,11 @@
                 <div class="motion-project-copy">
                     <span class="project-mini-number">03</span>
                     <h2>Aerodynamics & Flight Systems</h2>
-                    <p>Designed, built, simulated, launched, and recovered a high-power rocket for NAR Level 1 certification, including stability checks, recovery design, fabrication, and post-flight review.</p>
+                    <p>Flight-focused engineering spanning stability, glide performance, drag reduction, trajectory prediction, recovery, and validation.</p>
                     <div class="mini-tag-row">
-                        <span>CAD</span>
-                        <span>OpenRocket</span>
+                        <span>CFD</span>
                         <span>Stability</span>
+                        <span>Trajectory</span>
                         <span>Recovery</span>
                     </div>
                 </div>
@@ -104,20 +134,20 @@
             <article class="motion-card card-identity project-slot">
                 <div class="card-visual keycap-visual" aria-hidden="true">
                     <div class="keybase">
-                        <span class="key clear">REQ</span>
-                        <span class="key white">SYS</span>
-                        <span class="key orange">NASA</span>
+                        <span class="key clear">CTRL</span>
+                        <span class="key white">LOG</span>
+                        <span class="key orange">SENS</span>
                     </div>
                 </div>
                 <div class="motion-project-copy">
                     <span class="project-mini-number">04</span>
                     <h2>Controls & Data Systems</h2>
-                    <p>Developed mission architecture work across requirements, constraints, technical tradeoffs, and systems documentation for a concept shaped around real aerospace program workflows.</p>
+                    <p>Control logic, sensor thinking, test data interpretation, and software-assisted analysis that connects design assumptions to measured behavior.</p>
                     <div class="mini-tag-row">
-                        <span>Systems</span>
-                        <span>Requirements</span>
-                        <span>Trade Studies</span>
-                        <span>Mission Design</span>
+                        <span>Controls</span>
+                        <span>Telemetry</span>
+                        <span>Data Review</span>
+                        <span>Validation</span>
                     </div>
                 </div>
             </article>
@@ -131,12 +161,12 @@
                 <div class="motion-project-copy">
                     <span class="project-mini-number">05</span>
                     <h2>Structural Analysis & FEA</h2>
-                    <p>Contributed to student rocketry work involving structural design decisions, launch-readiness thinking, subsystem coordination, and documentation for high-power aerospace builds.</p>
+                    <p>Structural reasoning for aerospace and robotics builds, including load paths, stiffness, material choices, and simulation-ready component thinking.</p>
                     <div class="mini-tag-row">
-                        <span>Rocketry</span>
+                        <span>FEA</span>
                         <span>Structures</span>
+                        <span>Load Paths</span>
                         <span>Testing</span>
-                        <span>Documentation</span>
                     </div>
                 </div>
             </article>
@@ -150,18 +180,56 @@
                 <div class="motion-project-copy">
                     <span class="project-mini-number">06</span>
                     <h2>Systems Engineering & Mission Design</h2>
-                    <p>Built analysis workflows for modeling motion, checking performance, and turning engineering assumptions into clearer plots, calculations, and design decisions.</p>
+                    <p>Requirements, constraints, interfaces, subsystem coordination, and mission-level decisions that keep technical work aligned with the objective.</p>
                     <div class="mini-tag-row">
-                        <span>MATLAB</span>
-                        <span>Python</span>
-                        <span>Controls</span>
-                        <span>Analysis</span>
+                        <span>Requirements</span>
+                        <span>Interfaces</span>
+                        <span>Mission Design</span>
+                        <span>Risk</span>
                     </div>
                 </div>
             </article>
         </section>
 
-        <section class="cred-grid">
+        <section class="project-index" id="projects" aria-labelledby="project-index-title">
+            <div class="architecture-heading">
+                <span class="section-kicker">03 / Project Index</span>
+                <h2 id="project-index-title">Projects as systems</h2>
+                <p>
+                    The next build phase can turn these cards into fullscreen project transitions,
+                    then into CAD/component exploration when model assets are ready.
+                </p>
+            </div>
+
+            <div class="index-grid">
+                <article class="index-card featured-project">
+                    <span>01</span>
+                    <h3>High-Performance Glider</h3>
+                    <p>Glide ratio, drag reduction, structural integrity, and aerodynamic validation.</p>
+                    <div class="index-tags"><span>Aerodynamics</span><span>CAD</span><span>CFD</span></div>
+                </article>
+                <article class="index-card">
+                    <span>02</span>
+                    <h3>VEX U Shooter Robot</h3>
+                    <p>Dual-flywheel shooter, intake mechanics, drivetrain integration, and iteration.</p>
+                    <div class="index-tags"><span>Robotics</span><span>Mechanisms</span><span>Controls</span></div>
+                </article>
+                <article class="index-card">
+                    <span>03</span>
+                    <h3>L1 High-Power Rocket</h3>
+                    <p>Stability, recovery, fabrication, simulation, launch, and post-flight review.</p>
+                    <div class="index-tags"><span>Rocketry</span><span>OpenRocket</span><span>Recovery</span></div>
+                </article>
+                <article class="index-card">
+                    <span>04</span>
+                    <h3>NASA L’SPACE Mission Concept</h3>
+                    <p>Requirements, mission architecture, technical tradeoffs, and documentation.</p>
+                    <div class="index-tags"><span>Systems</span><span>Mission</span><span>Trades</span></div>
+                </article>
+            </div>
+        </section>
+
+        <section class="cred-grid about-system" id="about-overview">
             <div class="stat-column">
                 <article class="stat-card">
                     <strong>3+</strong>
@@ -183,8 +251,8 @@
                     <span></span>
                 </div>
                 <div>
-                    <h3>Systems Engineering Focus</h3>
-                    <a href="#about">Learn More →</a>
+                    <h3>Capability graph</h3>
+                    <a href="#ask">Ask the portfolio →</a>
                 </div>
             </article>
 
@@ -192,7 +260,7 @@
                 <div class="availability us-location-copy">
                     <h3>Based in United States</h3>
                 </div>
-                <div class="earth-stage" aria-label="Interactive rotating globe with Florida and Massachusetts markers">
+                <div class="earth-stage" aria-label="Interactive rotating globe">
                     <canvas id="interactiveGlobe"></canvas>
                     <div class="globe-hint">DRAG TO ROTATE</div>
                 </div>
@@ -210,6 +278,7 @@
             </div>
 
             <article class="founder-copy">
+                <span class="section-kicker">04 / About & Experience</span>
                 <h2>The Engineer</h2>
                 <p>
                     Akilesh Yelchuru is an aerospace engineering student focused on turning technical curiosity into mission-ready systems. His work spans rocketry, robotics, CAD, simulation, controls, and systems engineering documentation.
@@ -222,9 +291,34 @@
                 </p>
             </article>
 
-            <div class="logo-panel" aria-hidden="true">
-                <div class="metal-logo"></div>
+            <div class="logo-panel architecture-map" aria-hidden="true">
+                <div class="map-line"><span>Project</span><i></i><span>Skill</span></div>
+                <div class="map-line"><span>Component</span><i></i><span>Analysis</span></div>
+                <div class="map-line"><span>Evidence</span><i></i><span>Mission</span></div>
             </div>
+        </section>
+
+        <section class="ask-panel" id="ask" aria-labelledby="ask-title">
+            <div>
+                <span class="section-kicker">05 / Ask My Portfolio</span>
+                <h2 id="ask-title">Navigate by question.</h2>
+            </div>
+            <div class="ask-content">
+                <p>
+                    Future AI layer: visitors can ask for specific evidence, and the site can route them to the relevant capability, project, subsystem, or analysis.
+                </p>
+                <div class="prompt-list" aria-label="Example questions">
+                    <span>Show me FEA work.</span>
+                    <span>Explain the rocket recovery system.</span>
+                    <span>Where did CAD drive a design decision?</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact-panel" id="contact" aria-labelledby="contact-title">
+            <span class="section-kicker">06 / Contact</span>
+            <h2 id="contact-title">Let’s build the next system.</h2>
+            <a href="mailto:akileshyelchuru@gmail.com">akileshyelchuru@gmail.com <span>➜</span></a>
         </section>
     </main>
 
