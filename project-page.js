@@ -11,8 +11,7 @@ const projectDetails = {
             'Focused on packaging, manufacturability, subsystem interfaces, testing feedback, and iteration rather than a single isolated component.',
             'Connected CAD decisions to real build constraints and mission-style performance requirements.'
         ],
-        tools: ['CAD and mechanical design', 'Subsystem integration', 'Testing and iteration', 'Systems engineering', 'Mission constraints'],
-        impact: 'Most impressive for recruiters because it shows deeper effort than the L1 rocket: more integration, more design judgment, stronger space robotics relevance, and more technical conversation depth.'
+        tools: ['CAD and mechanical design', 'Subsystem integration', 'Testing and iteration', 'Systems engineering', 'Mission constraints']
     },
     glider: {
         kicker: '02 / Aerospace Fundamentals',
@@ -26,8 +25,7 @@ const projectDetails = {
             'Used aerodynamic and structural trade studies to balance glide performance, drag reduction, and integrity.',
             'Supported decisions with MATLAB simulations, CFD-based analysis, composite material selection, and technical documentation.'
         ],
-        tools: ['Siemens NX', 'MATLAB', 'CFD-based analysis', 'Composite material selection', 'Engineering trade studies'],
-        impact: 'Strong for aerospace roles because it shows fundamentals recruiters expect: CAD, aerodynamics, performance tradeoffs, structural reasoning, and documented iteration.'
+        tools: ['Siemens NX', 'MATLAB', 'CFD-based analysis', 'Composite material selection', 'Engineering trade studies']
     },
     vex: {
         kicker: '03 / Robotics Integration',
@@ -41,8 +39,7 @@ const projectDetails = {
             'Integrated drivetrain, intake, and shooter subsystems into a competition-ready robot architecture.',
             'Worked through rapid prototyping, odometry, PID tuning, test iteration, and competition debugging.'
         ],
-        tools: ['Fusion 360', 'Mechanical design', 'Robot drivetrain integration', 'Flywheel shooter design', 'PID control tuning'],
-        impact: 'Strong for robotics and mechanical roles because it proves subsystem integration, iteration under pressure, controls awareness, and practical debugging.'
+        tools: ['Fusion 360', 'Mechanical design', 'Robot drivetrain integration', 'Flywheel shooter design', 'PID control tuning']
     },
     rocket: {
         kicker: '04 / Certification Build',
@@ -56,8 +53,7 @@ const projectDetails = {
             'Moved through fabrication, assembly, test preparation, launch checklists, recovery, and review.',
             'Used the project as a concrete certification milestone and rocketry safety/process demonstration.'
         ],
-        tools: ['Computer-Aided Design', 'OpenRocket', 'Rocket stability and recovery design', 'Fabrication and assembly', 'Post-flight data review'],
-        impact: 'Useful as a certification and launch-readiness project, but less effort-intensive than Lunabotics. It should support the portfolio rather than be framed as the top project.'
+        tools: ['Computer-Aided Design', 'OpenRocket', 'Rocket stability and recovery design', 'Fabrication and assembly', 'Post-flight data review']
     },
     lspace: {
         kicker: '05 / Systems Engineering',
@@ -71,8 +67,7 @@ const projectDetails = {
             'Used trade studies and interface thinking to connect subsystem decisions to mission-level priorities.',
             'Practiced technical documentation and systems communication for air and space systems.'
         ],
-        tools: ['Requirements analysis', 'Trade studies', 'Interface thinking', 'Risk documentation', 'Mission architecture'],
-        impact: 'Best for systems engineering conversations because it shows requirements, documentation, interfaces, and design decision traceability.'
+        tools: ['Requirements analysis', 'Trade studies', 'Interface thinking', 'Risk documentation', 'Mission architecture']
     }
 };
 
@@ -117,7 +112,6 @@ function renderProject() {
     document.querySelector('[data-project-overview]').textContent = project.overview;
     document.querySelector('[data-project-technical]').innerHTML = project.technical.map((item) => `<li>${item}</li>`).join('');
     document.querySelector('[data-project-tools]').innerHTML = project.tools.map((item) => `<li>${item}</li>`).join('');
-    document.querySelector('[data-project-impact]').textContent = project.impact;
 
     const visual = document.querySelector('[data-project-visual]');
     visual.className = `project-page-visual ${project.shape}`;
