@@ -138,12 +138,13 @@ a {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 10px;
+    width: 100%;
     margin-top: 10px;
 }
 
 .project-page-grid article {
-    min-height: 250px;
-    padding: 26px;
+    min-height: 210px;
+    padding: clamp(22px, 2.1vw, 34px);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 12px;
     background: #070707;
@@ -157,9 +158,10 @@ a {
 
 .project-page-grid p,
 .project-page-grid li {
+    max-width: 52ch;
     color: #e8e8e8;
-    font-size: 15px;
-    line-height: 1.48;
+    font-size: clamp(15px, 1.04vw, 20px);
+    line-height: 1.42;
 }
 
 .project-page-grid ul {
