@@ -194,6 +194,23 @@ function renderBom(project) {
         .join('');
 }
 
+function setupCaseTabs() {
+    const tabs = [...document.querySelectorAll('[data-case-tabs] a')];
+
+    tabs.forEach((tab) => {
+        tab.addEventListener('click', (event) => {
+            const target = document.querySelector(tab.getAttribute('href'));
+            if (!target) return;
+
+            event.preventDefault();
+            tabs.forEach((item) => item.classList.remove('is-active'));
+            tab.classList.add('is-active');
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            history.replaceState(null, '', tab.getAttribute('href'));
+        });
+    });
+}
+
 function renderProject() {
     const project = projectDetails[getProjectKey()] || projectDetails.lunabotics;
     document.title = `${project.title} | Akilesh Yelchuru`;
@@ -217,3 +234,4 @@ function renderProject() {
 }
 
 renderProject();
+setupCaseTabs();
