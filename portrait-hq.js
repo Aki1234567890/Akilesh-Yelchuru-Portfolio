@@ -242,3 +242,8 @@ portraitScaleStyle.textContent = `
 }
 `;
 document.head.appendChild(portraitScaleStyle);
+
+const lowInertiaUpgradeScript = document.createElement('script');
+lowInertiaUpgradeScript.src = 'lunabotics-upgrade.js?v=lowinertia-20260809';
+lowInertiaUpgradeScript.defer = true;
+document.body.appendChild(lowInertiaUpgradeScript);
