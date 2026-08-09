@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Project Detail | Akilesh Yelchuru</title>
+    <meta name="description" content="Detailed aerospace engineering project page for Akilesh Yelchuru's portfolio." />
+    <link rel="stylesheet" href="typography.css" />
+    <link rel="stylesheet" href="project-page.css" />
+</head>
+<body>
+    <main class="project-page-shell" data-project-page>
+        <nav class="project-page-nav">
+            <a href="index.html#projects">← Back to Projects</a>
+            <a href="index.html#contact">Contact</a>
+        </nav>
+
+        <section class="project-page-hero">
+            <div>
+                <span class="project-page-kicker" data-project-kicker></span>
+                <h1 data-project-title>Project</h1>
+                <p data-project-summary></p>
+                <div class="project-page-tags" data-project-tags></div>
+            </div>
+            <div class="project-page-visual" data-project-visual aria-hidden="true">
+                <span></span><span></span><span></span><span></span>
+            </div>
+        </section>
+
+        <section class="project-page-grid">
+            <article>
+                <span>Overview</span>
+                <p data-project-overview></p>
+            </article>
+            <article>
+                <span>Technical Work</span>
+                <ul data-project-technical></ul>
+            </article>
+            <article>
+                <span>Tools & Skills</span>
+                <ul data-project-tools></ul>
+            </article>
+            <article>
+                <span>Recruiter Signal</span>
+                <p data-project-impact></p>
+            </article>
+        </section>
+    </main>
+
+    <script src="project-page.js"></script>
+</body>
+</html>
