@@ -15,6 +15,37 @@
         return `project.html?${nextParams.toString()}`;
     }
 
+    function normalizeLunaboticsGallery() {
+        if (project !== "lunabotics" && project !== "rover" && project !== "nasa-lunabotics-rover") return;
+
+        const gallery = document.querySelector("[data-project-gallery]");
+        if (!gallery) return;
+
+        const imageMap = new Map([
+            ["assets/lunabotics/rover-cad.webp", "assets/lunabotics/rover-cad.png"],
+            ["assets/lunabotics/drivetrain-fea.webp", "assets/lunabotics/drivetrain-fea.png"]
+        ]);
+
+        gallery.querySelectorAll(".case-gallery-card img").forEach((image) => {
+            const replacement = imageMap.get(image.getAttribute("src"));
+            if (replacement) {
+                image.setAttribute("src", replacement);
+            }
+        });
+
+        if (!gallery.querySelector('img[src="assets/lunabotics/plate.png"]')) {
+            gallery.insertAdjacentHTML("afterbegin", `
+                <figure class="case-gallery-card">
+                    <img src="assets/lunabotics/plate.png" alt="Lunabotics drivetrain plate CAD layout" loading="lazy" />
+                    <figcaption>
+                        <strong>Drivetrain Plate Layout</strong>
+                        <span>CAD plate geometry used for drivetrain packaging and subsystem mounting.</span>
+                    </figcaption>
+                </figure>
+            `);
+        }
+    }
+
     function applyPage(tab) {
         views.forEach((view) => {
             view.hidden = view.dataset.tabView !== tab;
@@ -40,5 +71,6 @@
         });
     });
 
+    normalizeLunaboticsGallery();
     applyPage(activeTab);
 })();
