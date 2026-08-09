@@ -1,6 +1,6 @@
 const transitionStyles = document.createElement('link');
 transitionStyles.rel = 'stylesheet';
-transitionStyles.href = 'project-transitions.css';
+transitionStyles.href = 'project-transitions.css?v=transition-spacing-20260809';
 document.head.appendChild(transitionStyles);
 
 const projectData = [
