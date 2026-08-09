@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="typography.css" />
     <link rel="stylesheet" href="project-page.css?v=case-study-20260809" />
     <link rel="stylesheet" href="project-case-palette.css?v=gallery-20260809" />
+    <link rel="stylesheet" href="project-tab-pages.css?v=tab-pages-20260809" />
 </head>
 <body>
     <main class="project-page-shell" data-project-page>
@@ -34,79 +35,88 @@
                 <span></span>
             </header>
 
-            <div class="case-study-tabs" aria-label="Project detail sections" data-case-tabs>
-                <a href="#case-summary" class="is-active">
+            <div class="case-study-tabs" aria-label="Project detail pages" data-page-tabs>
+                <a href="project.html?tab=summary" class="is-active" data-tab-link="summary">
                     <span>i</span>
                     Summary
                 </a>
-                <a href="#case-details">
+                <a href="project.html?tab=details" data-tab-link="details">
                     <span>doc</span>
                     Details
                 </a>
-                <a href="#case-gallery">
+                <a href="project.html?tab=gallery" data-tab-link="gallery">
                     <span>img</span>
                     Gallery
                 </a>
-                <a href="#case-tools">
+                <a href="project.html?tab=tools" data-tab-link="tools">
                     <span>+</span>
                     Tools
                 </a>
             </div>
 
             <div class="case-study-body">
-                <section class="case-block" id="case-summary">
-                    <span class="case-label">Timeline</span>
-                    <p data-project-timeline></p>
-                </section>
+                <div class="case-tab-view" data-tab-view="summary">
+                    <section class="case-block" id="case-summary">
+                        <span class="case-label">Timeline</span>
+                        <p data-project-timeline></p>
+                    </section>
 
-                <section class="case-block">
-                    <span class="case-label">Overview</span>
-                    <p data-project-overview></p>
-                </section>
+                    <section class="case-block">
+                        <span class="case-label">Overview</span>
+                        <p data-project-overview></p>
+                    </section>
 
-                <section class="case-block">
-                    <span class="case-label">Key Accomplishments</span>
-                    <ul data-project-technical></ul>
-                </section>
+                    <section class="case-block">
+                        <span class="case-label">Key Accomplishments</span>
+                        <ul data-project-technical></ul>
+                    </section>
+                </div>
 
-                <section class="case-block case-detail-panel" id="case-details">
-                    <span class="case-label">Project Details</span>
-                    <div class="case-copy-stack" data-project-details></div>
-                </section>
+                <div class="case-tab-view" data-tab-view="details" hidden>
+                    <section class="case-block case-detail-panel" id="case-details">
+                        <span class="case-label">Project Details</span>
+                        <div class="case-copy-stack" data-project-details></div>
+                    </section>
 
-                <section class="case-block case-bom-panel" data-bom-section>
-                    <span class="case-label">Bill of Materials</span>
-                    <div class="case-table-wrap">
-                        <table class="case-table">
-                            <thead data-project-bom-head></thead>
-                            <tbody data-project-bom-body></tbody>
-                        </table>
-                    </div>
-                </section>
+                    <section class="case-block case-bom-panel" data-bom-section>
+                        <span class="case-label">Bill of Materials</span>
+                        <div class="case-table-wrap">
+                            <table class="case-table">
+                                <thead data-project-bom-head></thead>
+                                <tbody data-project-bom-body></tbody>
+                            </table>
+                        </div>
+                    </section>
 
-                <section class="case-block case-data-panel" data-data-section>
-                    <span class="case-label">Data & Control System</span>
-                    <div class="case-copy-stack" data-project-data></div>
-                </section>
+                    <section class="case-block case-data-panel" data-data-section>
+                        <span class="case-label">Data & Control System</span>
+                        <div class="case-copy-stack" data-project-data></div>
+                    </section>
+                </div>
 
-                <section class="case-block case-gallery-panel" id="case-gallery" data-gallery-section>
-                    <span class="case-label">Gallery</span>
-                    <div class="case-gallery-grid" data-project-gallery></div>
-                </section>
+                <div class="case-tab-view" data-tab-view="gallery" hidden>
+                    <section class="case-block case-gallery-panel" id="case-gallery" data-gallery-section>
+                        <span class="case-label">Gallery</span>
+                        <div class="case-gallery-grid" data-project-gallery></div>
+                    </section>
+                </div>
 
-                <section class="case-block" id="case-tools">
-                    <span class="case-label">Skills & Tools</span>
-                    <div class="case-pills" data-project-tools></div>
-                </section>
+                <div class="case-tab-view" data-tab-view="tools" hidden>
+                    <section class="case-block" id="case-tools">
+                        <span class="case-label">Skills & Tools</span>
+                        <div class="case-pills" data-project-tools></div>
+                    </section>
 
-                <section class="case-block">
-                    <span class="case-label">External Links</span>
-                    <div class="case-links" data-project-links></div>
-                </section>
+                    <section class="case-block">
+                        <span class="case-label">External Links</span>
+                        <div class="case-links" data-project-links></div>
+                    </section>
+                </div>
             </div>
         </section>
     </main>
 
     <script src="project-page.js?v=gallery-20260809"></script>
+    <script src="project-tabs-page.js?v=tab-pages-20260809"></script>
 </body>
 </html>
