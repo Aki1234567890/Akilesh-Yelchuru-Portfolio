@@ -21,7 +21,8 @@ body,
 .project-page-hero p,
 .case-block p,
 .case-block li,
-.case-table {
+.case-table,
+.case-gallery-card figcaption {
     font-family: var(--font-sans, "Neue Montreal", "Inter", Arial, sans-serif) !important;
 }
 
@@ -32,7 +33,8 @@ body,
 .case-label,
 .case-pills span,
 .case-links a,
-.case-table th {
+.case-table th,
+.case-gallery-card strong {
     font-family: var(--font-mono, "Supply Mono", "IBM Plex Mono", "Courier New", monospace) !important;
 }
 
@@ -118,7 +120,8 @@ body,
 
 .case-detail-panel,
 .case-bom-panel,
-.case-data-panel {
+.case-data-panel,
+.case-gallery-panel {
     max-width: 1240px;
 }
 
@@ -164,6 +167,46 @@ body,
     border-bottom: 0;
 }
 
+.case-gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.case-gallery-card {
+    overflow: hidden;
+    border: 1px solid var(--case-line);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.case-gallery-card img {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    display: block;
+    object-fit: cover;
+    background: #111;
+}
+
+.case-gallery-card figcaption {
+    display: grid;
+    gap: 8px;
+    padding: 16px;
+}
+
+.case-gallery-card strong {
+    color: var(--case-orange);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.case-gallery-card span {
+    color: rgba(245, 242, 237, 0.78);
+    font-size: 14px;
+    line-height: 1.4;
+}
+
 .case-pills,
 .case-links {
     display: flex;
@@ -201,5 +244,9 @@ body,
 
     .case-table {
         font-size: 13px;
+    }
+
+    .case-gallery-grid {
+        grid-template-columns: 1fr;
     }
 }
