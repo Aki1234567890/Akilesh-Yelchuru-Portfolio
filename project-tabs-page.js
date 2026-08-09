@@ -22,8 +22,8 @@
         if (!gallery) return;
 
         const imageMap = new Map([
-            ["assets/lunabotics/rover-cad.webp", "assets/lunabotics/rover-cad.png"],
-            ["assets/lunabotics/drivetrain-fea.webp", "assets/lunabotics/drivetrain-fea.png"]
+            ["assets/lunabotics/rover-cad.webp", "assets/lunabotics/Screenshot 2026-08-09 145606.png"],
+            ["assets/lunabotics/drivetrain-fea.webp", "assets/lunabotics/Screenshot 2026-08-09 145626.png"]
         ]);
 
         gallery.querySelectorAll(".case-gallery-card img").forEach((image) => {
