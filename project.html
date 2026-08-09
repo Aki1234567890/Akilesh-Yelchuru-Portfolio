@@ -7,7 +7,7 @@
     <meta name="description" content="Detailed aerospace engineering project page for Akilesh Yelchuru's portfolio." />
     <link rel="stylesheet" href="typography.css" />
     <link rel="stylesheet" href="project-page.css?v=case-study-20260809" />
-    <link rel="stylesheet" href="project-case-palette.css?v=black-orange-20260809" />
+    <link rel="stylesheet" href="project-case-palette.css?v=details-20260809" />
 </head>
 <body>
     <main class="project-page-shell" data-project-page>
@@ -60,9 +60,29 @@
                     <p data-project-overview></p>
                 </section>
 
-                <section class="case-block" id="case-details">
+                <section class="case-block">
                     <span class="case-label">Key Accomplishments</span>
                     <ul data-project-technical></ul>
+                </section>
+
+                <section class="case-block case-detail-panel" id="case-details">
+                    <span class="case-label">Project Details</span>
+                    <div class="case-copy-stack" data-project-details></div>
+                </section>
+
+                <section class="case-block case-bom-panel" data-bom-section>
+                    <span class="case-label">Bill of Materials</span>
+                    <div class="case-table-wrap">
+                        <table class="case-table">
+                            <thead data-project-bom-head></thead>
+                            <tbody data-project-bom-body></tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <section class="case-block case-data-panel" data-data-section>
+                    <span class="case-label">Data & Control System</span>
+                    <div class="case-copy-stack" data-project-data></div>
                 </section>
 
                 <section class="case-block" id="case-tools">
@@ -78,6 +98,6 @@
         </section>
     </main>
 
-    <script src="project-page.js?v=case-study-20260809"></script>
+    <script src="project-page.js?v=details-20260809"></script>
 </body>
 </html>
