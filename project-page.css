@@ -39,7 +39,10 @@ a {
 .project-page-nav a,
 .project-page-kicker,
 .project-page-tags span,
-.project-page-grid article span {
+.case-study-tabs a,
+.case-label,
+.case-pills span,
+.case-links a {
     font-family: var(--font-mono, "Courier New", monospace) !important;
     font-size: 12px;
     font-weight: 800;
@@ -134,40 +137,202 @@ a {
     box-shadow: inset -20px -24px 50px rgba(0, 0, 0, 0.72), 0 45px 80px rgba(0, 0, 0, 0.55);
 }
 
-.project-page-grid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 10px;
-    width: 100%;
+.project-case-study {
     margin-top: 10px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 14px;
+    background:
+        linear-gradient(rgba(22, 27, 39, 0.76), rgba(10, 12, 17, 0.88)),
+        radial-gradient(circle at 82% 16%, rgba(130, 162, 255, 0.26), transparent 34%),
+        radial-gradient(circle at 12% 86%, rgba(255, 138, 56, 0.16), transparent 30%),
+        #0b0d12;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
 }
 
-.project-page-grid article {
-    min-height: 210px;
-    padding: clamp(22px, 2.1vw, 34px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 12px;
-    background: #070707;
-}
-
-.project-page-grid article span {
-    display: inline-block;
-    margin-bottom: 18px;
-    color: #ff8a38;
-}
-
-.project-page-grid p,
-.project-page-grid li {
-    max-width: 52ch;
-    color: #e8e8e8;
-    font-size: clamp(15px, 1.04vw, 20px);
-    line-height: 1.42;
-}
-
-.project-page-grid ul {
+.case-study-header {
+    position: relative;
+    min-height: 86px;
     display: grid;
+    place-items: center;
+    padding: 20px 28px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.case-study-header h2 {
+    max-width: 1180px;
+    color: #dce7ff;
+    text-align: center;
+    font-size: clamp(1.5rem, 3vw, 3rem);
+    font-weight: 800;
+    line-height: 1.02;
+    letter-spacing: 0.045em;
+    text-transform: uppercase;
+}
+
+.case-study-header h2::after {
+    content: "";
+    display: block;
+    width: 70px;
+    height: 3px;
+    margin: 24px auto 0;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #6d9cff, #ff8a38);
+}
+
+.case-study-tabs {
+    display: flex;
+    align-items: center;
+    gap: 26px;
+    padding: 14px 36px;
+    background: rgba(9, 11, 17, 0.48);
+}
+
+.case-study-tabs a {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 7px;
+    color: rgba(235, 239, 248, 0.58);
+    letter-spacing: 0.04em;
+}
+
+.case-study-tabs a span {
+    width: 38px;
+    height: 38px;
+    display: grid;
+    place-items: center;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 50%;
+    color: #dfe7ff;
+    background: rgba(255, 255, 255, 0.05);
+    font-size: 10px;
+}
+
+.case-study-tabs a.is-active,
+.case-study-tabs a:hover {
+    color: #79a2ff;
+}
+
+.case-study-tabs a.is-active span,
+.case-study-tabs a:hover span {
+    border-color: rgba(121, 162, 255, 0.58);
+    background: #5d82ef;
+}
+
+.case-study-body {
+    position: relative;
+    display: grid;
+    gap: 30px;
+    padding: clamp(28px, 4vw, 58px);
+}
+
+.case-study-body::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    opacity: 0.22;
+    pointer-events: none;
+    background-image:
+        linear-gradient(115deg, transparent 0 21%, rgba(255, 255, 255, 0.16) 21.2%, transparent 21.5% 42%, rgba(255, 255, 255, 0.1) 42.2%, transparent 42.5%),
+        radial-gradient(circle, rgba(255, 255, 255, 0.36) 1px, transparent 1.8px);
+    background-size: 340px 260px, 34px 34px;
+    mask-image: linear-gradient(90deg, black, transparent 92%);
+}
+
+.case-block {
+    position: relative;
+    z-index: 1;
+    max-width: 1180px;
+}
+
+.case-label {
+    display: inline-flex;
+    align-items: center;
     gap: 10px;
-    padding-left: 18px;
+    margin-bottom: 14px;
+    color: #79a2ff;
+    font-size: 15px;
+    letter-spacing: 0.16em;
+}
+
+.case-label::before {
+    content: "i";
+    width: 17px;
+    height: 17px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    color: #0a0c12;
+    background: #79a2ff;
+    font-size: 11px;
+    letter-spacing: 0;
+}
+
+.case-block:first-child .case-label::before {
+    content: "[]";
+    border-radius: 4px;
+    font-size: 8px;
+}
+
+.case-block:nth-child(3) .case-label::before {
+    content: "*";
+    font-size: 16px;
+}
+
+.case-block:nth-child(4) .case-label::before {
+    content: "+";
+    font-size: 14px;
+}
+
+.case-block:nth-child(5) .case-label::before {
+    content: "->";
+    border-radius: 999px;
+    font-size: 8px;
+}
+
+.case-block p,
+.case-block li {
+    max-width: 1120px;
+    color: rgba(247, 248, 252, 0.92);
+    font-size: clamp(16px, 1.2vw, 21px);
+    line-height: 1.48;
+}
+
+.case-block ul {
+    display: grid;
+    gap: 8px;
+    padding-left: 24px;
+}
+
+.case-block li::marker {
+    color: #dfe7ff;
+}
+
+.case-pills,
+.case-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+}
+
+.case-pills span,
+.case-links a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 28px;
+    padding: 7px 14px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 999px;
+    color: #e9edf7;
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.case-links a:hover {
+    color: #050505;
+    background: #f4f4f4;
 }
 
 .project-page-visual.depth-lunabotics span:nth-child(1) {
@@ -287,8 +452,7 @@ a {
 .project-page-visual.depth-mission span:nth-child(3) { transform: rotate(-32deg); }
 
 @media (max-width: 1050px) {
-    .project-page-hero,
-    .project-page-grid {
+    .project-page-hero {
         grid-template-columns: 1fr;
     }
 }
@@ -305,5 +469,15 @@ a {
 
     .project-page-hero h1 {
         font-size: clamp(3rem, 15vw, 5.2rem);
+    }
+
+    .case-study-tabs {
+        gap: 14px;
+        padding: 12px 18px;
+    }
+
+    .case-study-tabs a span {
+        width: 34px;
+        height: 34px;
     }
 }
