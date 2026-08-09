@@ -180,12 +180,23 @@ body,
     background: rgba(255, 255, 255, 0.04);
 }
 
+.case-gallery-card:first-child {
+    grid-column: 1 / -1;
+}
+
 .case-gallery-card img {
-    width: 100%;
-    aspect-ratio: 16 / 10;
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    max-height: 360px;
     display: block;
-    object-fit: cover;
+    margin: 0 auto;
+    object-fit: contain;
     background: #111;
+}
+
+.case-gallery-card:first-child img {
+    max-height: 560px;
 }
 
 .case-gallery-card figcaption {
@@ -248,5 +259,9 @@ body,
 
     .case-gallery-grid {
         grid-template-columns: 1fr;
+    }
+
+    .case-gallery-card:first-child {
+        grid-column: auto;
     }
 }
