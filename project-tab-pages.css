@@ -1,0 +1,29 @@
+.case-tab-view {
+    display: grid;
+    gap: 30px;
+    min-height: 520px;
+}
+
+.case-tab-view[hidden] {
+    display: none !important;
+}
+
+.case-study-tabs a[aria-current="true"] {
+    color: var(--case-orange, #ff7a1a);
+}
+
+.case-study-tabs a[aria-current="true"] span {
+    border-color: rgba(255, 122, 26, 0.55);
+    color: var(--case-orange, #ff7a1a);
+}
+
+.case-tab-view .case-block {
+    max-width: 1240px;
+}
+
+@media (max-width: 760px) {
+    .case-tab-view {
+        min-height: 420px;
+        gap: 22px;
+    }
+}
