@@ -26,6 +26,20 @@ const projectDetails = {
             'Analysis work focused on first-principles drivetrain and excavation modeling, including geometry, torque, thrust, slip, friction, helix angle effects, power draw, and mechanical efficiency.',
             'FEA was used to evaluate stress, load transfer, and structural reliability under mobility and excavation loading conditions. These results supported actuator sizing, gearbox selection, drivetrain architecture decisions, and mechanical-electrical packaging coordination.'
         ],
+        gallery: [
+            {
+                src: 'assets/lunabotics/rover-cad.webp',
+                alt: 'NASA Lunabotics rover CAD assembly with auger and screw drivetrain',
+                title: 'Rover CAD Assembly',
+                caption: 'Integrated rover CAD showing auger excavation layout, chassis packaging, and quad-screw drivetrain architecture.'
+            },
+            {
+                src: 'assets/lunabotics/drivetrain-fea.webp',
+                alt: 'Blue rover drivetrain structural analysis render',
+                title: 'Drivetrain Structure Analysis',
+                caption: 'Structural analysis view used to evaluate load transfer and reliability across the screw drivetrain frame.'
+            }
+        ],
         tools: ['Fusion 360', 'ANSYS FEA', 'PDR', 'CDR', 'CAD', 'Manufacturing', 'Risk Analysis', 'Subsystem Integration'],
         links: [{ label: 'LowInertia Portfolio', href: 'https://lowinertia.com/portfolio/akileshyelchuru' }]
     },
@@ -198,6 +212,29 @@ function renderBom(project) {
         .join('');
 }
 
+function renderGallery(project) {
+    const section = document.querySelector('[data-gallery-section]');
+    const gallery = document.querySelector('[data-project-gallery]');
+    const items = project.gallery || [];
+
+    if (!items.length) {
+        section.hidden = true;
+        gallery.innerHTML = '';
+        return;
+    }
+
+    section.hidden = false;
+    gallery.innerHTML = items.map((item) => `
+        <figure class="case-gallery-card">
+            <img src="${item.src}" alt="${item.alt}" loading="lazy" />
+            <figcaption>
+                <strong>${item.title}</strong>
+                <span>${item.caption}</span>
+            </figcaption>
+        </figure>
+    `).join('');
+}
+
 function setupCaseTabs() {
     const tabs = [...document.querySelectorAll('[data-case-tabs] a')];
 
@@ -230,6 +267,7 @@ function renderProject() {
     renderParagraphs(document.querySelector('[data-project-details]'), project.details || []);
     renderBom(project);
     renderParagraphs(document.querySelector('[data-project-data]'), project.data || []);
+    renderGallery(project);
     document.querySelector('[data-project-tools]').innerHTML = project.tools.map((item) => `<span>${item}</span>`).join('');
     document.querySelector('[data-project-links]').innerHTML = project.links.map((item) => `<a href="${item.href}" target="_blank" rel="noreferrer">${item.label} ↗</a>`).join('');
 
