@@ -6,7 +6,7 @@
     <title>Project Detail | Akilesh Yelchuru</title>
     <meta name="description" content="Detailed aerospace engineering project page for Akilesh Yelchuru's portfolio." />
     <link rel="stylesheet" href="typography.css" />
-    <link rel="stylesheet" href="project-page.css?v=detail-grid-20260809" />
+    <link rel="stylesheet" href="project-page.css?v=case-study-20260809" />
 </head>
 <body>
     <main class="project-page-shell" data-project-page>
@@ -27,22 +27,56 @@
             </div>
         </section>
 
-        <section class="project-page-grid">
-            <article>
-                <span>Overview</span>
-                <p data-project-overview></p>
-            </article>
-            <article>
-                <span>Technical Work</span>
-                <ul data-project-technical></ul>
-            </article>
-            <article>
-                <span>Tools & Skills</span>
-                <ul data-project-tools></ul>
-            </article>
+        <section class="project-case-study" aria-label="Project case study">
+            <header class="case-study-header">
+                <h2 data-case-title>Project</h2>
+                <span></span>
+            </header>
+
+            <div class="case-study-tabs" aria-label="Project detail sections">
+                <a href="#case-summary" class="is-active">
+                    <span>i</span>
+                    Summary
+                </a>
+                <a href="#case-details">
+                    <span>doc</span>
+                    Details
+                </a>
+                <a href="#case-tools">
+                    <span>img</span>
+                    Tools
+                </a>
+            </div>
+
+            <div class="case-study-body" id="case-summary">
+                <section class="case-block">
+                    <span class="case-label">Timeline</span>
+                    <p data-project-timeline></p>
+                </section>
+
+                <section class="case-block">
+                    <span class="case-label">Overview</span>
+                    <p data-project-overview></p>
+                </section>
+
+                <section class="case-block" id="case-details">
+                    <span class="case-label">Key Accomplishments</span>
+                    <ul data-project-technical></ul>
+                </section>
+
+                <section class="case-block" id="case-tools">
+                    <span class="case-label">Skills & Tools</span>
+                    <div class="case-pills" data-project-tools></div>
+                </section>
+
+                <section class="case-block">
+                    <span class="case-label">External Links</span>
+                    <div class="case-links" data-project-links></div>
+                </section>
+            </div>
         </section>
     </main>
 
-    <script src="project-page.js"></script>
+    <script src="project-page.js?v=case-study-20260809"></script>
 </body>
 </html>
