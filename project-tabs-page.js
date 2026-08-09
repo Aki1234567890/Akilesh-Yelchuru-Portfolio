@@ -22,8 +22,8 @@
         if (!gallery) return;
 
         const imageMap = new Map([
-            ["assets/lunabotics/rover-cad.webp", "assets/lunabotics/Screenshot 2026-08-09 145606.png"],
-            ["assets/lunabotics/drivetrain-fea.webp", "assets/lunabotics/Screenshot 2026-08-09 145626.png"]
+            ["assets/lunabotics/rover-cad.webp", "lunabotics/Screenshot 2026-08-09 145606.png"],
+            ["assets/lunabotics/drivetrain-fea.webp", "lunabotics/Screenshot 2026-08-09 145626.png"]
         ]);
 
         gallery.querySelectorAll(".case-gallery-card img").forEach((image) => {
@@ -33,10 +33,10 @@
             }
         });
 
-        if (!gallery.querySelector('img[src="assets/lunabotics/plate.png"]')) {
+        if (!gallery.querySelector('img[src="lunabotics/plate.png"]')) {
             gallery.insertAdjacentHTML("afterbegin", `
                 <figure class="case-gallery-card">
-                    <img src="assets/lunabotics/plate.png" alt="Lunabotics drivetrain plate CAD layout" loading="lazy" />
+                    <img src="lunabotics/plate.png" alt="Lunabotics drivetrain plate CAD layout" loading="lazy" />
                     <figcaption>
                         <strong>Drivetrain Plate Layout</strong>
                         <span>CAD plate geometry used for drivetrain packaging and subsystem mounting.</span>
