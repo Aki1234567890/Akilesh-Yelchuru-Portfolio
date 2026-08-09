@@ -273,7 +273,7 @@
 .project-transition-controls {
     position: absolute;
     right: clamp(24px, 4vw, 58px);
-    bottom: clamp(24px, 4vw, 44px);
+    top: clamp(24px, 4vw, 44px);
     z-index: 6;
     display: flex;
     align-items: center;
@@ -301,23 +301,25 @@
     position: absolute;
     left: clamp(24px, 4vw, 62px);
     right: clamp(24px, 4vw, 58px);
-    bottom: clamp(24px, 4vw, 44px);
+    bottom: clamp(28px, 4vw, 52px);
     z-index: 5;
-    display: flex;
-    gap: 8px;
-    max-width: calc(100% - 190px);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 10px;
 }
 
 .project-transition-strip button {
-    flex: 1;
-    min-height: 42px;
+    min-height: 46px;
+    padding: 10px 18px;
     border: 1px solid rgba(255,255,255,0.1);
     border-radius: 999px;
     color: rgba(255,255,255,0.64);
     background: rgba(255,255,255,0.045);
     font-family: var(--font-mono, "Courier New", monospace);
-    font-size: 11px;
+    font-size: 10px;
     font-weight: 800;
+    line-height: 1.08;
+    text-align: center;
     text-transform: uppercase;
     cursor: pointer;
 }
@@ -329,7 +331,7 @@
 
 @media (max-width: 900px) {
     .project-transition-stage {
-        min-height: 760px;
+        min-height: 820px;
     }
 
     .project-transition-copy {
@@ -344,19 +346,15 @@
     }
 
     .project-transition-strip {
-        max-width: none;
-        right: 24px;
+        grid-template-columns: 1fr;
         bottom: 92px;
-        overflow-x: auto;
-    }
-
-    .project-transition-strip button {
-        min-width: 150px;
     }
 
     .project-transition-controls {
         left: 24px;
         right: 24px;
+        top: auto;
+        bottom: 24px;
         justify-content: space-between;
     }
 }
