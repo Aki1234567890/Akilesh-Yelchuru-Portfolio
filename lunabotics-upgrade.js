@@ -1,30 +1,35 @@
 const lunaboticsProjects = [
     {
         title: 'NASA Lunabotics Rover',
+        slug: 'lunabotics',
         description: 'The highest recruiter-impact project: a space robotics rover involving mechanical design, CAD, subsystem integration, iteration, testing, and mission-driven constraints for planetary exploration-style work.',
         tags: ['Lunabotics', 'Rover', 'CAD', 'Systems', 'Testing'],
         shape: 'depth-lunabotics'
     },
     {
         title: 'High-Performance Glider Design & Fabrication',
+        slug: 'glider',
         description: 'Designed and built an efficient unpowered glider to maximize glide ratio and structural performance under realistic aerospace constraints, using Siemens NX, aerodynamic trade studies, structural optimization, MATLAB simulations, CFD-based analysis, and technical documentation.',
         tags: ['Aerodynamic Modeling', 'Siemens NX', 'Structural Optimization', 'MATLAB', 'CFD'],
         shape: 'depth-glider'
     },
     {
         title: 'VEX U Robotics Spin Up Dual Flywheel Shooter Robot',
+        slug: 'vex',
         description: 'Built a VEX U Spin Up competition robot focused on fast disk intake, accurate shooting, reliable autonomous scoring, drivetrain-intake-shooter integration, rapid prototyping, odometry, PID tuning, competition debugging, and cross-functional collaboration.',
         tags: ['Fusion 360', 'Flywheel Shooter', 'Intake', 'Odometry', 'PID'],
         shape: 'depth-robot'
     },
     {
         title: 'L1 High-Power Rocket Project',
+        slug: 'rocket',
         description: 'Designed, built, simulated, launched, and recovered a high-power rocket for NAR Level 1 certification, with emphasis on stability, recovery reliability, fabrication, launch checklists, and post-flight data review.',
         tags: ['CAD', 'OpenRocket', 'Stability', 'Recovery', 'Post-Flight Review'],
         shape: 'depth-rocket'
     },
     {
         title: 'NASA L’SPACE Mission Concept',
+        slug: 'lspace',
         description: 'Mission design and systems engineering work focused on requirements, interfaces, trade studies, risk, documentation, and mission architecture for air and space systems.',
         tags: ['Requirements', 'Interfaces', 'Mission Design', 'Trades', 'Risk'],
         shape: 'depth-mission'
@@ -41,11 +46,12 @@ function rebuildProjectTransitionWithLunabotics() {
     const stage = document.createElement('div');
     stage.className = 'project-transition-stage';
     stage.innerHTML = `
-        <div class="project-transition-copy">
+        <div class="project-transition-copy" data-project-open-copy>
             <span class="project-counter" data-lunabotics-counter></span>
             <h3 data-lunabotics-title></h3>
             <p data-lunabotics-description></p>
             <div class="project-transition-tags" data-lunabotics-tags></div>
+            <a class="project-detail-cta" data-project-detail-link href="project.html?project=lunabotics">Open Project →</a>
         </div>
         <div class="project-depth-scene" data-lunabotics-scene></div>
         <div class="project-transition-strip" data-lunabotics-strip></div>
@@ -61,9 +67,12 @@ function rebuildProjectTransitionWithLunabotics() {
     const strip = stage.querySelector('[data-lunabotics-strip]');
 
     lunaboticsProjects.forEach((project, index) => {
-        const object = document.createElement('div');
+        const object = document.createElement('button');
+        object.type = 'button';
         object.className = `project-depth-object ${project.shape}`;
         object.dataset.projectObject = String(index);
+        object.dataset.projectOpen = project.slug;
+        object.setAttribute('aria-label', `Open ${project.title} details`);
         object.innerHTML = '<span></span><span></span><span></span><span></span>';
         scene.appendChild(object);
 
@@ -76,6 +85,11 @@ function rebuildProjectTransitionWithLunabotics() {
 
     let activeIndex = 0;
 
+    function openActiveProject() {
+        const project = lunaboticsProjects[activeIndex];
+        window.location.href = `project.html?project=${encodeURIComponent(project.slug)}`;
+    }
+
     function setActiveProject(nextIndex) {
         activeIndex = (nextIndex + lunaboticsProjects.length) % lunaboticsProjects.length;
         const activeProject = lunaboticsProjects[activeIndex];
@@ -84,6 +98,7 @@ function rebuildProjectTransitionWithLunabotics() {
         stage.querySelector('[data-lunabotics-title]').textContent = activeProject.title;
         stage.querySelector('[data-lunabotics-description]').textContent = activeProject.description;
         stage.querySelector('[data-lunabotics-tags]').innerHTML = activeProject.tags.map((tag) => `<span>${tag}</span>`).join('');
+        stage.querySelector('[data-project-detail-link]').href = `project.html?project=${encodeURIComponent(activeProject.slug)}`;
 
         stage.querySelectorAll('[data-project-object]').forEach((object) => {
             const objectIndex = Number(object.dataset.projectObject);
@@ -105,6 +120,16 @@ function rebuildProjectTransitionWithLunabotics() {
     stage.querySelector('[data-lunabotics-next]').addEventListener('click', () => setActiveProject(activeIndex + 1));
     stage.querySelectorAll('[data-project-jump]').forEach((button) => {
         button.addEventListener('click', () => setActiveProject(Number(button.dataset.projectJump)));
+    });
+    stage.querySelectorAll('[data-project-object]').forEach((object) => {
+        object.addEventListener('click', () => {
+            if (!object.classList.contains('is-active')) {
+                setActiveProject(Number(object.dataset.projectObject));
+                return;
+            }
+
+            openActiveProject();
+        });
     });
 
     setActiveProject(0);
