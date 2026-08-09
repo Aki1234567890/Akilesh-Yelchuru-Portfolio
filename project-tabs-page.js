@@ -23,8 +23,13 @@
         links.forEach((link) => {
             const isActive = link.dataset.tabLink === tab;
             link.classList.toggle("is-active", isActive);
-            link.toggleAttribute("aria-current", isActive);
             link.href = pageUrl(link.dataset.tabLink);
+
+            if (isActive) {
+                link.setAttribute("aria-current", "page");
+            } else {
+                link.removeAttribute("aria-current");
+            }
         });
     }
 
