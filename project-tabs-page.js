@@ -5,11 +5,6 @@
     const requestedTab = params.get("tab");
     const activeTab = validTabs.has(requestedTab) ? requestedTab : "summary";
 
-    const imageFallbacks = new Map([
-        ["assets/lunabotics/rover-cad.webp", "assets/lunabotics/rover-cad.svg"],
-        ["assets/lunabotics/drivetrain-fea.webp", "assets/lunabotics/drivetrain-fea.svg"]
-    ]);
-
     const links = Array.from(document.querySelectorAll("[data-tab-link]"));
     const views = Array.from(document.querySelectorAll("[data-tab-view]"));
 
@@ -18,15 +13,6 @@
         nextParams.set("project", project);
         nextParams.set("tab", tab);
         return `project.html?${nextParams.toString()}`;
-    }
-
-    function hydrateGalleryImages() {
-        document.querySelectorAll(".case-gallery-card img").forEach((image) => {
-            const replacement = imageFallbacks.get(image.getAttribute("src"));
-            if (replacement) {
-                image.setAttribute("src", replacement);
-            }
-        });
     }
 
     function applyPage(tab) {
@@ -54,6 +40,5 @@
         });
     });
 
-    hydrateGalleryImages();
     applyPage(activeTab);
 })();
