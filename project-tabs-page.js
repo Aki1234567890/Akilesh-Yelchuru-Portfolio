@@ -32,18 +32,6 @@
                 image.setAttribute("src", replacement);
             }
         });
-
-        if (!gallery.querySelector('img[src="lunabotics/plate.png"]')) {
-            gallery.insertAdjacentHTML("afterbegin", `
-                <figure class="case-gallery-card">
-                    <img src="lunabotics/plate.png" alt="Lunabotics drivetrain plate CAD layout" loading="lazy" />
-                    <figcaption>
-                        <strong>Drivetrain Plate Layout</strong>
-                        <span>CAD plate geometry used for drivetrain packaging and subsystem mounting.</span>
-                    </figcaption>
-                </figure>
-            `);
-        }
     }
 
     function applyPage(tab) {
