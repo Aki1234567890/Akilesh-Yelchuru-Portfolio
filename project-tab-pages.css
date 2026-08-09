@@ -8,11 +8,11 @@
     display: none !important;
 }
 
-.case-study-tabs a[aria-current="true"] {
+.case-study-tabs a[aria-current="page"] {
     color: var(--case-orange, #ff7a1a);
 }
 
-.case-study-tabs a[aria-current="true"] span {
+.case-study-tabs a[aria-current="page"] span {
     border-color: rgba(255, 122, 26, 0.55);
     color: var(--case-orange, #ff7a1a);
 }
