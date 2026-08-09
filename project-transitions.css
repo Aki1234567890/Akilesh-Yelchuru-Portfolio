@@ -124,22 +124,6 @@
     cursor: pointer;
 }
 
-.project-depth-object.is-active::after {
-    content: "Open Project →";
-    position: absolute;
-    left: 50%;
-    bottom: -34px;
-    z-index: 4;
-    transform: translateX(-50%);
-    color: #f4f0eb;
-    font-family: var(--font-mono, "Courier New", monospace);
-    font-size: 11px;
-    font-weight: 800;
-    text-transform: uppercase;
-    white-space: nowrap;
-    opacity: 0.76;
-}
-
 .project-depth-object.is-active {
     opacity: 1;
     transform: translate3d(-50%, -50%, 180px) rotateX(0deg) rotateY(-18deg) scale(1.08);
