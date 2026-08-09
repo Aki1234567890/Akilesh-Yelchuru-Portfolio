@@ -2,27 +2,31 @@ const projectDetails = {
     lunabotics: {
         kicker: '01 / Recruiter Impact',
         title: 'NASA Lunabotics Rover',
-        summary: 'A space robotics rover project focused on mechanical design, subsystem integration, iteration, testing mindset, and mission-driven constraints.',
+        summary: 'Designed and analyzed mechanical systems for a NASA Lunabotics rover intended to traverse simulated lunar regolith, excavate material, and remain within strict mass and power constraints.',
         shape: 'depth-lunabotics',
-        timeline: '2025 — Present',
-        tags: ['Lunabotics', 'Rover', 'CAD', 'Systems', 'Testing'],
-        overview: 'A NASA Lunabotics rover effort centered on space robotics, mechanical design, subsystem integration, and mission-ready iteration. The project is structured around building a rover that can connect CAD decisions, physical constraints, drivetrain packaging, mechanism design, testing feedback, and competition requirements into one coherent system.',
+        timeline: 'May 2025 — Jun 2026',
+        tags: ['Fusion 360', 'ANSYS FEA', 'PDR', 'CDR', 'CAD', 'Manufacturing', 'Risk Analysis', 'Subsystem Integration'],
+        overview: 'Designed and analyzed mechanical systems for a NASA Lunabotics rover intended to traverse simulated lunar regolith, excavate material, and remain within strict mass and power constraints. My work focused on the quad-screw drivetrain, auger excavation system, drivetrain sizing, CAD integration, FEA, actuator and gearbox selection, subsystem packaging, and mechanical-electrical interface coordination. The rover design operated around key constraints including ≈40 kg mechanical mass and ≤1200 W mechanical power.',
         technical: [
-            'Developed rover-centered mechanical and subsystem thinking for a planetary exploration-style competition context.',
-            'Balanced packaging, manufacturability, subsystem interfaces, testing feedback, and iteration instead of treating the rover as a single isolated component.',
-            'Connected CAD decisions to real build constraints and mission-style performance requirements.',
-            'Built the strongest recruiter-facing project in the portfolio because it shows integration depth, design judgment, and space robotics relevance.'
+            'Produced and maintained Fusion 360 CAD models for drivetrain screws, auger integration, chassis layout, and mechanical subsystem packaging.',
+            'Developed first-principles drivetrain and excavation models relating geometry, torque, thrust, slip, power draw, friction, helix angle effects, and mechanical efficiency to rover performance.',
+            'Performed FEA on rover drivetrain components to evaluate stress, load transfer, and structural reliability under mobility and excavation loading conditions.',
+            'Sized and selected actuators and gearboxes to meet drawbar-pull and excavation-rate targets while staying within current, mass, and thermal limits.',
+            'Supported architecture downselect for a quad-screw drivetrain enabling strafing and point-turn maneuvers through screw-thread geometry.',
+            'Supported the auger vs. bucket-drum comparison framework; team prototype results showed auger excavation collected 1620 g versus 750 g for the bucket drum in the same internal-volume test setup.',
+            'Coordinated with electrical subsystem leads to resolve mechanical-electrical integration constraints for drivetrain layout, sensor mounting, packaging, and power distribution.',
+            'Delivered a quantitative screw sizing and verification framework used to guide drivetrain and excavation design decisions within the rover’s mass and power envelope.'
         ],
         details: [
-            'The Lunabotics rover is framed as a space robotics systems project rather than a single mechanism build. The work emphasizes subsystem interfaces, chassis packaging, drivetrain constraints, excavation or collection architecture, and the mechanical decisions required to make a rover survive practical testing.',
-            'The strongest value of this project is the integration challenge: CAD choices have to account for manufacturing limits, serviceability, subsystem access, weight distribution, reliability, and mission-style scoring constraints. That makes it a higher-signal recruiter project than a narrow certification build.',
-            'Future documentation should include the final rover architecture, subsystem drawings, testing notes, and iteration history so recruiters can see the full engineering trail from requirements to design tradeoffs.'
+            'The Lunabotics rover is framed as a space robotics systems project rather than a single mechanism build. The work emphasizes subsystem interfaces, chassis packaging, drivetrain constraints, excavation architecture, and the mechanical decisions required to make a rover survive practical testing in simulated lunar regolith.',
+            'The strongest value of this project is the integration challenge: CAD choices have to account for manufacturing limits, serviceability, subsystem access, weight distribution, reliability, sensor placement, actuator sizing, and mission-style scoring constraints. That makes it a higher-signal recruiter project than a narrow certification build.',
+            'The project combines mechanical design, analysis, and system-level coordination through PDR/CDR-style review work, drivetrain and excavation trade studies, and CAD packages that connect geometry to real subsystem constraints.'
         ],
         data: [
-            'Control and data work should focus on test-driven decisions: drivetrain behavior, mechanism repeatability, subsystem timing, and any sensor feedback used to validate rover performance.',
-            'Useful metrics to document include traction consistency, collection rate, mechanism reliability, current draw, drive response, and failures found during testing.'
+            'Analysis work focused on first-principles drivetrain and excavation modeling, including geometry, torque, thrust, slip, friction, helix angle effects, power draw, and mechanical efficiency.',
+            'FEA was used to evaluate stress, load transfer, and structural reliability under mobility and excavation loading conditions. These results supported actuator sizing, gearbox selection, drivetrain architecture decisions, and mechanical-electrical packaging coordination.'
         ],
-        tools: ['CAD and mechanical design', 'Subsystem integration', 'Testing and iteration', 'Systems engineering', 'Mission constraints'],
+        tools: ['Fusion 360', 'ANSYS FEA', 'PDR', 'CDR', 'CAD', 'Manufacturing', 'Risk Analysis', 'Subsystem Integration'],
         links: [{ label: 'LowInertia Portfolio', href: 'https://lowinertia.com/portfolio/akileshyelchuru' }]
     },
     glider: {
