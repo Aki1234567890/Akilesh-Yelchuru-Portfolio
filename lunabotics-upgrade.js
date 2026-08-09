@@ -1,32 +1,32 @@
 const lunaboticsProjects = [
     {
         title: 'NASA Lunabotics Rover',
-        description: 'The strongest recruiter-impact project: a space robotics system with mechanical design, subsystem integration, fabrication thinking, testing, iteration, and mission-driven constraints.',
-        tags: ['Lunabotics', 'Rover', 'CAD', 'Systems'],
+        description: 'The highest recruiter-impact project: a space robotics rover involving mechanical design, CAD, subsystem integration, iteration, testing, and mission-driven constraints for planetary exploration-style work.',
+        tags: ['Lunabotics', 'Rover', 'CAD', 'Systems', 'Testing'],
         shape: 'depth-lunabotics'
     },
     {
-        title: 'High-Performance Glider',
-        description: 'Aerospace geometry moves forward through glide ratio, drag reduction, and structural decisions resolved into one aircraft form.',
-        tags: ['Aerodynamics', 'CAD', 'CFD'],
+        title: 'High-Performance Glider Design & Fabrication',
+        description: 'Designed and built an efficient unpowered glider to maximize glide ratio and structural performance under realistic aerospace constraints, using Siemens NX, aerodynamic trade studies, structural optimization, MATLAB simulations, CFD-based analysis, and technical documentation.',
+        tags: ['Aerodynamic Modeling', 'Siemens NX', 'Structural Optimization', 'MATLAB', 'CFD'],
         shape: 'depth-glider'
     },
     {
-        title: 'VEX U Shooter Robot',
-        description: 'Mechanism packaging, flywheel motion, intake flow, drivetrain layout, and competition-ready subsystem integration.',
-        tags: ['Robotics', 'Mechanisms', 'Controls'],
+        title: 'VEX U Robotics Spin Up Dual Flywheel Shooter Robot',
+        description: 'Built a VEX U Spin Up competition robot focused on fast disk intake, accurate shooting, reliable autonomous scoring, drivetrain-intake-shooter integration, rapid prototyping, odometry, PID tuning, competition debugging, and cross-functional collaboration.',
+        tags: ['Fusion 360', 'Flywheel Shooter', 'Intake', 'Odometry', 'PID'],
         shape: 'depth-robot'
     },
     {
-        title: 'L1 High-Power Rocket',
-        description: 'A focused certification project covering launch readiness, stability, recovery, simulation, fabrication, and post-flight review.',
-        tags: ['Rocketry', 'OpenRocket', 'Recovery'],
+        title: 'L1 High-Power Rocket Project',
+        description: 'Designed, built, simulated, launched, and recovered a high-power rocket for NAR Level 1 certification, with emphasis on stability, recovery reliability, fabrication, launch checklists, and post-flight data review.',
+        tags: ['CAD', 'OpenRocket', 'Stability', 'Recovery', 'Post-Flight Review'],
         shape: 'depth-rocket'
     },
     {
         title: 'NASA L’SPACE Mission Concept',
-        description: 'Mission architecture thinking through requirements, interfaces, technical trades, risk, and systems-level decisions.',
-        tags: ['Systems', 'Mission', 'Trades'],
+        description: 'Mission design and systems engineering work focused on requirements, interfaces, trade studies, risk, documentation, and mission architecture for air and space systems.',
+        tags: ['Requirements', 'Interfaces', 'Mission Design', 'Trades', 'Risk'],
         shape: 'depth-mission'
     }
 ];
@@ -110,6 +110,49 @@ function rebuildProjectTransitionWithLunabotics() {
     setActiveProject(0);
 }
 
+function importLowInertiaBioCopy() {
+    const heroParagraph = document.querySelector('.hero-copy p');
+    if (heroParagraph) {
+        heroParagraph.textContent = 'Aerospace engineering student at Florida Institute of Technology focused on efficient, mission-driven systems for air and space: NASA L’SPACE mission design, VEX U robotics, glider aerodynamics, thermal analysis, and mechanical systems integration.';
+    }
+
+    const about = document.querySelector('.founder-copy');
+    if (about) {
+        const paragraphs = about.querySelectorAll('p');
+        if (paragraphs[0]) paragraphs[0].textContent = 'Akilesh Yelchuru is an aerospace engineering student at Florida Institute of Technology with a passion for designing efficient, mission-driven systems for air and space.';
+        if (paragraphs[1]) paragraphs[1].textContent = 'His experience spans NASA L’SPACE mission design, competitive VEX U robotics, hands-on glider aerodynamics, thermal analysis, structural and thermal simulation, mechanical systems integration, and technical documentation.';
+        if (paragraphs[2]) paragraphs[2].textContent = 'He brings a strong foundation in 3D CAD modeling with NX, SolidWorks, and Fusion 360; Python, C++, MATLAB, and Arduino for automation and data analysis; engineering documentation; cross-team collaboration; and trade-study-driven decision making.';
+    }
+
+    const focusCard = Array.from(document.querySelectorAll('.about-contact-grid div')).find((card) => card.textContent.includes('Focus'));
+    const focusText = focusCard?.querySelector('strong');
+    if (focusText) {
+        focusText.textContent = 'Aerospace systems, CAD, simulation, robotics, thermal analysis';
+    }
+
+    const askCopy = document.querySelector('.ask-content p');
+    if (askCopy) {
+        askCopy.textContent = 'Ask about NASA Lunabotics, recruiter impact, CAD, FEA, glider aerodynamics, VEX robotics, L1 rocketry, NASA L’SPACE, simulation, controls, or systems engineering.';
+    }
+
+    const promptList = document.querySelector('.prompt-list');
+    if (promptList && !promptList.querySelector('[data-chat-prompt="What project has the most recruiter impact?"]')) {
+        const prompts = [
+            'What project has the most recruiter impact?',
+            'Explain the NASA Lunabotics rover.',
+            'Show my CAD and simulation experience.'
+        ];
+
+        prompts.forEach((prompt) => {
+            const button = document.createElement('button');
+            button.type = 'button';
+            button.dataset.chatPrompt = prompt;
+            button.textContent = prompt;
+            promptList.appendChild(button);
+        });
+    }
+}
+
 function addSmartPortfolioAnswers() {
     const chatForm = document.querySelector('[data-chat-form]');
     const chatMessages = document.querySelector('[data-chat-messages]');
@@ -134,11 +177,15 @@ function addSmartPortfolioAnswers() {
         const text = input.toLowerCase();
 
         if (text.includes('lunabotics') || text.includes('rover')) {
-            return 'NASA Lunabotics Rover is the strongest space robotics project in the portfolio. It shows mechanical design, subsystem integration, iteration, testing mindset, CAD, and mission-driven constraints.';
+            return 'NASA Lunabotics Rover is the strongest recruiter-impact project in the portfolio. It shows space robotics relevance, CAD/mechanical design, subsystem integration, testing mindset, iteration, and mission-driven constraints.';
         }
 
         if (text.includes('impressive') || text.includes('recruiter') || text.includes('impact') || text.includes('best project')) {
-            return 'For recruiter impact, NASA Lunabotics Rover is the strongest project. It shows deeper engineering effort than the L1 rocket: mechanical design, subsystem integration, testing, iteration, and space robotics relevance. The L1 is still useful as a certification project, but Lunabotics gives recruiters more technical depth to evaluate.';
+            return 'For recruiter impact, NASA Lunabotics Rover is the strongest project. It shows deeper engineering effort than the L1 rocket: mechanical design, subsystem integration, testing, iteration, and space robotics relevance. The L1 is useful as a certification project, but Lunabotics gives recruiters more technical depth to evaluate.';
+        }
+
+        if (text.includes('cad') || text.includes('simulation') || text.includes('thermal')) {
+            return 'The portfolio shows CAD and simulation through NX, SolidWorks, Fusion 360, MATLAB, CFD-based analysis, structural and thermal simulation, and design trade studies across glider, robotics, rocketry, and mission-system work.';
         }
 
         return '';
@@ -158,22 +205,22 @@ function addSmartPortfolioAnswers() {
         window.setTimeout(() => addMessage(response, 'bot'), 220);
     }, true);
 
-    document.querySelectorAll('[data-chat-prompt]').forEach((button) => {
+    document.addEventListener('click', (event) => {
+        const button = event.target.closest('[data-chat-prompt]');
+        if (!button) return;
+
         const prompt = button.dataset.chatPrompt || button.textContent || '';
-        if (!/impressive|recruiter|lunabotics|rover/i.test(prompt)) return;
+        const response = smartAnswer(prompt);
+        if (!response) return;
 
-        button.addEventListener('click', (event) => {
-            const response = smartAnswer(prompt);
-            if (!response) return;
-
-            event.preventDefault();
-            event.stopImmediatePropagation();
-            openChat();
-            addMessage(prompt, 'user');
-            window.setTimeout(() => addMessage(response, 'bot'), 220);
-        }, true);
-    });
+        event.preventDefault();
+        event.stopImmediatePropagation();
+        openChat();
+        addMessage(prompt, 'user');
+        window.setTimeout(() => addMessage(response, 'bot'), 220);
+    }, true);
 }
 
 rebuildProjectTransitionWithLunabotics();
+importLowInertiaBioCopy();
 addSmartPortfolioAnswers();
