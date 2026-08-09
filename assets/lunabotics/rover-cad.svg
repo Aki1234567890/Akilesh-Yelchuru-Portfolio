@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 460" role="img" aria-labelledby="title desc">
+  <title id="title">NASA Lunabotics rover CAD assembly</title>
+  <desc id="desc">Isometric CAD-style rover with auger, chassis, screw drivetrain, wheels, and gridded engineering background.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#4f5762"/>
+      <stop offset="1" stop-color="#262b31"/>
+    </linearGradient>
+    <linearGradient id="metal" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#d5d8da"/>
+      <stop offset="0.45" stop-color="#747b82"/>
+      <stop offset="1" stop-color="#202428"/>
+    </linearGradient>
+    <linearGradient id="dark" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#454b50"/>
+      <stop offset="1" stop-color="#08090a"/>
+    </linearGradient>
+    <linearGradient id="copper" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#b98572"/>
+      <stop offset="0.55" stop-color="#7b382f"/>
+      <stop offset="1" stop-color="#2b1715"/>
+    </linearGradient>
+    <filter id="shadow" x="-40%" y="-40%" width="180%" height="180%">
+      <feDropShadow dx="0" dy="22" stdDeviation="18" flood-color="#000" flood-opacity="0.55"/>
+    </filter>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M 24 0 L 0 0 0 24" fill="none" stroke="#87909b" stroke-width="0.8" opacity="0.32"/>
+      <path d="M 0 24 L 24 0" fill="none" stroke="#87909b" stroke-width="0.55" opacity="0.18"/>
+    </pattern>
+  </defs>
+  <rect width="520" height="460" fill="url(#bg)"/>
+  <rect width="520" height="460" fill="url(#grid)" opacity="0.9"/>
+  <g transform="translate(82 88) skewY(-12) scale(1.03)" filter="url(#shadow)">
+    <ellipse cx="188" cy="275" rx="185" ry="38" fill="#050607" opacity="0.45"/>
+    <g stroke="#090a0b" stroke-width="4" fill="url(#dark)">
+      <ellipse cx="68" cy="238" rx="39" ry="57" transform="rotate(-17 68 238)"/>
+      <ellipse cx="145" cy="269" rx="41" ry="58" transform="rotate(-17 145 269)"/>
+      <ellipse cx="285" cy="253" rx="42" ry="59" transform="rotate(-17 285 253)"/>
+      <ellipse cx="355" cy="218" rx="38" ry="55" transform="rotate(-17 355 218)"/>
+    </g>
+    <g fill="none" stroke="#2f373d" stroke-width="5" opacity="0.8">
+      <path d="M52 239 L156 276 M266 256 L366 219 M92 209 L330 183"/>
+    </g>
+    <path d="M88 132 L306 83 L388 139 L169 191 Z" fill="url(#metal)" stroke="#121416" stroke-width="3"/>
+    <path d="M169 191 L388 139 L384 224 L168 282 Z" fill="#6e767d" stroke="#151719" stroke-width="3"/>
+    <path d="M88 132 L169 191 L168 282 L88 218 Z" fill="#3c4248" stroke="#151719" stroke-width="3"/>
+    <g stroke="#cbd0d4" stroke-width="2" fill="none" opacity="0.72">
+      <path d="M111 149 L174 199 L176 262"/>
+      <path d="M150 140 L219 183 L225 250"/>
+      <path d="M198 123 L268 166 L276 235"/>
+      <path d="M246 105 L318 150 L331 216"/>
+      <path d="M119 223 L351 166"/>
+      <path d="M122 249 L355 191"/>
+    </g>
+    <g transform="translate(186 107)">
+      <path d="M0 0 L138 36 L151 93 L12 57 Z" fill="#22262a" stroke="#070809" stroke-width="4"/>
+      <path d="M32 9 L70 20 L83 78 L45 67 Z" fill="url(#copper)" stroke="#170f0d" stroke-width="3"/>
+      <path d="M78 22 L116 32 L128 88 L91 79 Z" fill="url(#copper)" stroke="#170f0d" stroke-width="3"/>
+      <g stroke="#d7dde1" stroke-width="4" opacity="0.75">
+        <path d="M27 35 L136 64"/>
+        <path d="M36 19 L47 71"/>
+        <path d="M82 31 L94 83"/>
+      </g>
+    </g>
+    <g transform="translate(314 48)">
+      <path d="M0 0 L91 26 L91 119 L0 91 Z" fill="#8d9398" stroke="#0b0c0d" stroke-width="4"/>
+      <path d="M10 13 L80 34 L80 106 L10 84 Z" fill="#bfc4c7" opacity="0.75"/>
+      <g fill="#121416">
+        <circle cx="18" cy="22" r="3"/><circle cx="38" cy="28" r="3"/><circle cx="59" cy="35" r="3"/>
+        <circle cx="18" cy="76" r="3"/><circle cx="41" cy="84" r="3"/><circle cx="65" cy="91" r="3"/>
+      </g>
+    </g>
+    <g stroke="#121416" stroke-width="4" fill="url(#metal)">
+      <path d="M12 178 L86 153 L112 171 L36 202 Z"/>
+      <path d="M30 170 L15 128 L38 119 L58 166 Z"/>
+      <path d="M47 160 L78 129 L102 140 L70 180 Z"/>
+    </g>
+    <g stroke="#d6dade" stroke-width="2.2" fill="none" opacity="0.9">
+      <path d="M70 222 L146 195 L258 211 L366 174"/>
+      <path d="M76 239 L164 214 L261 232 L352 199"/>
+      <path d="M87 254 L167 236 L265 249 L343 224"/>
+    </g>
+  </g>
+</svg>
